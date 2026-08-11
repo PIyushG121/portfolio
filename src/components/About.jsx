@@ -36,7 +36,7 @@ export default function About() {
           </div>
           <div className="col-lg-5">
             <div className="about-hero-card">
-              <img src="assets/img/about.png" alt={`About ${settings.name}`} />
+              <img src="assets/img/about.png" alt={`About ${settings.name}`} loading="lazy" />
               <div className="experience-badge">
                 <strong>2+</strong>
                 <span>Years of Experience</span>

@@ -49,7 +49,7 @@ export default function Portfolio() {
                 <div className="project-card">
                   <div>
                     <div className="project-img-wrap">
-                      <img src={project.image_path} alt={project.title} />
+                      <img src={project.image_path} alt={project.title} loading="lazy" />
                       {project.external_link && (
                         <a
                           href={project.external_link}

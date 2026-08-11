@@ -133,6 +133,7 @@ export default function Certifications() {
                     src={cert.image}
                     alt={cert.title}
                     className="img-fluid"
+                    loading="lazy"
                   />
                   <div className="featured-cert-overlay">
                     <i className="bi bi-zoom-in"></i>
