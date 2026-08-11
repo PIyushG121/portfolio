@@ -16,58 +16,58 @@
         ['icon' => 'bi bi-database', 'title' => 'Database Management', 'text' => 'Designing efficient database schemas and optimizing queries.'],
     ];
     $techStackRow1 = [
-        ['label' => 'React.js', 'icon' => 'assets/img/assets_logo/react.svg'],
-        ['label' => 'Next.js', 'icon' => 'assets/img/assets_logo/nextjs.svg'],
-        ['label' => 'TypeScript', 'icon' => 'assets/img/assets_logo/typescript.svg'],
-        ['label' => 'Tailwind CSS', 'icon' => 'assets/img/assets_logo/tailwind.svg'],
-        ['label' => 'Laravel', 'icon' => 'assets/img/assets_logo/laravel.svg'],
-        ['label' => 'Node.js', 'icon' => 'assets/img/assets_logo/node.svg'],
-        ['label' => 'Express.js', 'icon' => 'assets/img/assets_logo/express.svg'],
-        ['label' => 'MySQL', 'icon' => 'assets/img/assets_logo/mysql.svg'],
+        ['label' => 'React.js', 'icon' => 'assets/img/logo/react.svg'],
+        ['label' => 'Next.js', 'icon' => 'assets/img/logo/nextjs.svg'],
+        ['label' => 'TypeScript', 'icon' => 'assets/img/logo/typescript.svg'],
+        ['label' => 'Tailwind CSS', 'icon' => 'assets/img/logo/tailwind.svg'],
+        ['label' => 'Laravel', 'icon' => 'assets/img/logo/laravel.svg'],
+        ['label' => 'Node.js', 'icon' => 'assets/img/logo/node.svg'],
+        ['label' => 'Express.js', 'icon' => 'assets/img/logo/express.svg'],
+        ['label' => 'MySQL', 'icon' => 'assets/img/logo/mysql.svg'],
     ];
 
     $techStackRow2 = [
-        ['label' => 'MongoDB', 'icon' => 'assets/img/assets_logo/mongo.svg'],
-        ['label' => 'PostgreSQL', 'icon' => 'assets/img/assets_logo/postgres.svg'],
-        ['label' => 'Git', 'icon' => 'assets/img/assets_logo/git.svg'],
-        ['label' => 'GitHub', 'icon' => 'assets/img/assets_logo/github.svg'],
-        ['label' => 'Docker', 'icon' => 'assets/img/assets_logo/docker.svg'],
-        ['label' => 'Figma', 'icon' => 'assets/img/assets_logo/figma.svg'],
-        ['label' => 'VS Code', 'icon' => 'assets/img/assets_logo/vscode.svg'],
-        ['label' => 'Postman', 'icon' => 'assets/img/assets_logo/postman.svg'],
+        ['label' => 'MongoDB', 'icon' => 'assets/img/logo/mongo.svg'],
+        ['label' => 'PostgreSQL', 'icon' => 'assets/img/logo/postgres.svg'],
+        ['label' => 'Git', 'icon' => 'assets/img/logo/git.svg'],
+        ['label' => 'GitHub', 'icon' => 'assets/img/logo/github.svg'],
+        ['label' => 'Docker', 'icon' => 'assets/img/logo/docker.svg'],
+        ['label' => 'Figma', 'icon' => 'assets/img/logo/figma.svg'],
+        ['label' => 'VS Code', 'icon' => 'assets/img/logo/vscode.svg'],
+        ['label' => 'Postman', 'icon' => 'assets/img/logo/postman.svg'],
     ];
 
     $skillMeta = [
         'React.js / Next.js' => [
-            'icon' => 'assets/img/assets_logo/react.svg',
+            'icon' => 'assets/img/logo/react.svg',
             'level' => 'Advanced',
         ],
         'Laravel' => [
-            'icon' => 'assets/img/assets_logo/laravel.svg',
+            'icon' => 'assets/img/logo/laravel.svg',
             'level' => 'Advanced',
         ],
         'JavaScript / TypeScript' => [
-            'icon' => 'assets/img/assets_logo/javascript.svg',
+            'icon' => 'assets/img/logo/javascript.svg',
             'level' => 'Advanced',
         ],
         'Node.js' => [
-            'icon' => 'assets/img/assets_logo/node.svg',
+            'icon' => 'assets/img/logo/node.svg',
             'level' => 'Strong',
         ],
         'Python' => [
-            'icon' => 'assets/img/assets_logo/python.svg',
+            'icon' => 'assets/img/logo/python.svg',
             'level' => 'Strong',
         ],
         'PHP' => [
-            'icon' => 'assets/img/assets_logo/php.svg',
+            'icon' => 'assets/img/logo/php.svg',
             'level' => 'Strong',
         ],
         'MySQL / PostgreSQL' => [
-            'icon' => 'assets/img/assets_logo/mysql.svg',
+            'icon' => 'assets/img/logo/mysql.svg',
             'level' => 'Strong',
         ],
         'AI/ML (LangChain, Gemini AI, RAG)' => [
-            'icon' => 'assets/img/assets_logo/aiml.svg',
+            'icon' => 'assets/img/logo/aiml.svg',
             'level' => 'Intermediate',
         ],
     ];
@@ -1435,6 +1435,146 @@
         margin: 0;
     }
 
+    /* Header Sidebar Profile Section Styling */
+    .header .profile-img {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        margin: 20px auto 10px auto;
+    }
+
+    .header .profile-img img {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 50% !important;
+        border: 3.5px solid #1d6bf3 !important;
+        box-shadow: 0 0 25px rgba(29, 107, 243, 0.45);
+    }
+
+    .header .profile-img .online-status-dot {
+        position: absolute;
+        bottom: 6px;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        background: #10b981;
+        border: 3.5px solid #040914;
+        border-radius: 50%;
+        box-shadow: 0 0 12px rgba(16, 185, 129, 0.7);
+        display: block;
+    }
+
+    .header .logo h1.sitename {
+        font-size: 24px;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.2px;
+        margin: 12px 0 2px 0;
+        text-align: center;
+    }
+
+    .sidebar-role-tagline {
+        color: #2563eb;
+        font-size: 14.5px;
+        font-weight: 600;
+        text-align: center;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .sidebar-social-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50% !important;
+        background: #1e293b !important;
+        color: #ffffff !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        font-size: 19px !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        text-decoration: none !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .sidebar-social-btn:hover {
+        transform: translateY(-3px) scale(1.08);
+        background: #334155 !important;
+        box-shadow: 0 8px 20px rgba(45, 114, 255, 0.3);
+    }
+
+    .sidebar-social-btn.sidebar-social-linkedin {
+        background: #0077b5 !important;
+    }
+
+    .sidebar-social-btn.sidebar-social-linkedin:hover {
+        background: #005885 !important;
+    }
+
+    .sidebar-social-btn.sidebar-social-mail {
+        background: #dc2626 !important;
+    }
+
+    .sidebar-social-btn.sidebar-social-mail:hover {
+        background: #b91c1c !important;
+    }
+
+    /* Floating WhatsApp Button Widget */
+    .floating_btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    @keyframes pulsing {
+        to {
+            box-shadow: 0 0 0 30px rgba(37, 211, 102, 0);
+        }
+    }
+
+    .contact_icon {
+        background-color: #25d366;
+        color: #fff;
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+        border-radius: 50px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translatey(0px);
+        box-shadow: 0 0 0 0 #25d366;
+        -webkit-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+        -moz-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+        -ms-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+        animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+        font-weight: normal;
+        font-family: sans-serif;
+        text-decoration: none !important;
+        transition: all 300ms ease-in-out;
+    }
+
+    .contact_icon:hover {
+        transform: scale(1.08);
+        color: #ffffff;
+    }
+
+    .text_icon {
+        margin-top: 8px;
+        color: #707070;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
     @media (max-width: 991.98px) {
         .skills-grid {
             grid-template-columns: 1fr;
@@ -1461,23 +1601,25 @@
 <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
-    <div class="profile-img">
-        <img src="{{ asset($settings['profile_photo'] ?? 'assets/img/my-profile-img.jpeg') }}" alt="Profile" class="img-fluid rounded-circle">
+    <div class="profile-img text-center">
+        <img src="{{ asset($settings['profile_photo'] ?? 'assets/img/my-profile-img.jpeg') }}" alt="Profile" class="img-fluid">
+        <span class="online-status-dot" title="Available for opportunities"></span>
     </div>
 
-    <a href="{{ route('home') }}" class="logo d-flex align-items-center justify-content-center">
-        <h1 class="sitename">{{ $settings['name'] ?? 'Portfolio' }}</h1>
+    <a href="{{ route('home') }}" class="logo d-flex flex-column align-items-center justify-content-center">
+        <h1 class="sitename">{{ $settings['name'] ?? 'Piyush Gupta' }}</h1>
+        <span class="sidebar-role-tagline">{{ $settings['tagline'] ?? 'Full Stack Developer' }}</span>
     </a>
 
-    <div class="social-links text-center d-flex justify-content-center align-items-center gap-2">
-        <a href="{{ $settings['github'] ?? '#' }}" target="_blank" rel="noreferrer" title="GitHub" class="d-inline-flex align-items-center justify-content-center">
-            <img src="{{ asset('assets/img/assets_logo/github.svg') }}" alt="GitHub" width="20" height="20">
+    <div class="social-links text-center d-flex justify-content-center align-items-center gap-3 my-3">
+        <a href="{{ $settings['github'] ?? '#' }}" target="_blank" rel="noreferrer" title="GitHub" class="sidebar-social-btn">
+            <i class="bi bi-github"></i>
         </a>
-        <a href="{{ $settings['linkedin'] ?? '#' }}" target="_blank" rel="noreferrer" title="LinkedIn" class="d-inline-flex align-items-center justify-content-center">
-            <img src="{{ asset('assets/img/assets_logo/linkedin.svg') }}" alt="LinkedIn" width="20" height="20">
+        <a href="{{ $settings['linkedin'] ?? '#' }}" target="_blank" rel="noreferrer" title="LinkedIn" class="sidebar-social-btn sidebar-social-linkedin">
+            <i class="bi bi-linkedin"></i>
         </a>
-        <a href="mailto:{{ $settings['email'] ?? 'contact@example.com' }}" target="_blank" rel="noreferrer" title="Email" class="d-inline-flex align-items-center justify-content-center">
-            <img src="{{ asset('assets/img/assets_logo/mail.svg') }}" alt="Email" width="20" height="20">
+        <a href="mailto:{{ $settings['email'] ?? 'piyushgupta422003@gmail.com' }}" target="_blank" rel="noreferrer" title="Email" class="sidebar-social-btn sidebar-social-mail">
+            <i class="bi bi-envelope-fill"></i>
         </a>
     </div>
 
@@ -2090,18 +2232,18 @@
                     <div class="tech-grid-box">
                         <h3 class="fw-bold mb-4" style="font-size: 18px; color: #0f172a;">Technologies I Work With</h3>
                         <div class="tech-mini-grid">
-                            <div class="tech-mini-item" title="React.js"><img src="{{ asset('assets/img/assets_logo/react.svg') }}" alt="React"></div>
-                            <div class="tech-mini-item" title="Next.js"><img src="{{ asset('assets/img/assets_logo/nextjs.svg') }}" alt="Next.js"></div>
-                            <div class="tech-mini-item" title="TypeScript"><img src="{{ asset('assets/img/assets_logo/typescript.svg') }}" alt="TypeScript"></div>
-                            <div class="tech-mini-item" title="Node.js"><img src="{{ asset('assets/img/assets_logo/node.svg') }}" alt="Node.js"></div>
-                            <div class="tech-mini-item" title="Laravel"><img src="{{ asset('assets/img/assets_logo/laravel.svg') }}" alt="Laravel"></div>
-                            <div class="tech-mini-item" title="Python"><img src="{{ asset('assets/img/assets_logo/python.svg') }}" alt="Python"></div>
-                            <div class="tech-mini-item" title="MySQL"><img src="{{ asset('assets/img/assets_logo/mysql.svg') }}" alt="MySQL"></div>
-                            <div class="tech-mini-item" title="PostgreSQL"><img src="{{ asset('assets/img/assets_logo/postgres.svg') }}" alt="PostgreSQL"></div>
-                            <div class="tech-mini-item" title="MongoDB"><img src="{{ asset('assets/img/assets_logo/mongo.svg') }}" alt="MongoDB"></div>
-                            <div class="tech-mini-item" title="Tailwind CSS"><img src="{{ asset('assets/img/assets_logo/tailwind.svg') }}" alt="Tailwind"></div>
-                            <div class="tech-mini-item" title="Git"><img src="{{ asset('assets/img/assets_logo/git.svg') }}" alt="Git"></div>
-                            <div class="tech-mini-item" title="Docker"><img src="{{ asset('assets/img/assets_logo/docker.svg') }}" alt="Docker"></div>
+                            <div class="tech-mini-item" title="React.js"><img src="{{ asset('assets/img/logo/react.svg') }}" alt="React"></div>
+                            <div class="tech-mini-item" title="Next.js"><img src="{{ asset('assets/img/logo/nextjs.svg') }}" alt="Next.js"></div>
+                            <div class="tech-mini-item" title="TypeScript"><img src="{{ asset('assets/img/logo/typescript.svg') }}" alt="TypeScript"></div>
+                            <div class="tech-mini-item" title="Node.js"><img src="{{ asset('assets/img/logo/node.svg') }}" alt="Node.js"></div>
+                            <div class="tech-mini-item" title="Laravel"><img src="{{ asset('assets/img/logo/laravel.svg') }}" alt="Laravel"></div>
+                            <div class="tech-mini-item" title="Python"><img src="{{ asset('assets/img/logo/python.svg') }}" alt="Python"></div>
+                            <div class="tech-mini-item" title="MySQL"><img src="{{ asset('assets/img/logo/mysql.svg') }}" alt="MySQL"></div>
+                            <div class="tech-mini-item" title="PostgreSQL"><img src="{{ asset('assets/img/logo/postgres.svg') }}" alt="PostgreSQL"></div>
+                            <div class="tech-mini-item" title="MongoDB"><img src="{{ asset('assets/img/logo/mongo.svg') }}" alt="MongoDB"></div>
+                            <div class="tech-mini-item" title="Tailwind CSS"><img src="{{ asset('assets/img/logo/tailwind.svg') }}" alt="Tailwind"></div>
+                            <div class="tech-mini-item" title="Git"><img src="{{ asset('assets/img/logo/git.svg') }}" alt="Git"></div>
+                            <div class="tech-mini-item" title="Docker"><img src="{{ asset('assets/img/logo/docker.svg') }}" alt="Docker"></div>
                         </div>
                     </div>
                 </div>
@@ -2237,5 +2379,15 @@
             </div>
         </div>
     </section>
+
+    <!-- Floating WhatsApp Button Widget -->
+    <div class="floating_btn">
+        <a target="_blank" rel="noreferrer" href="https://wa.me/919555620175">
+            <div class="contact_icon">
+                <i class="fa fa-whatsapp my-float"></i>
+            </div>
+        </a>
+        <p class="text_icon">Talk to us?</p>
+    </div>
 </main>
 @endsection
