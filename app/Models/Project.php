@@ -13,6 +13,8 @@ class Project extends Model
         'long_description',
         'image_path',
         'external_link',
+        'github_link',
+        'tech_stack',
         'featured',
         'sort_order',
     ];

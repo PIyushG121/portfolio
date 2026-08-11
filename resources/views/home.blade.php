@@ -807,6 +807,634 @@
         box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
     }
 
+    /* Modern Portfolio Section UI */
+    .portfolio-filters-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-filter-btn {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        color: #475467;
+        font-size: 13.5px;
+        font-weight: 600;
+        padding: 8px 18px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 2px 8px rgba(15, 41, 77, 0.03);
+    }
+
+    .portfolio-filter-btn:hover,
+    .portfolio-filter-btn.active {
+        background: #1d6bf3;
+        color: #ffffff;
+        border-color: #1d6bf3;
+        box-shadow: 0 4px 14px rgba(29, 107, 243, 0.3);
+    }
+
+    .project-card {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(15, 41, 77, 0.04);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 14px 35px rgba(45, 114, 255, 0.12);
+        border-color: #cbd5e1;
+    }
+
+    .project-img-wrap {
+        position: relative;
+        overflow: hidden;
+        height: 220px;
+        background: #0f172a;
+    }
+
+    .project-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .project-img-wrap img {
+        transform: scale(1.04);
+    }
+
+    .project-external-btn {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #ffffff;
+        color: #1d6bf3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+        transition: all 0.25s ease;
+        z-index: 3;
+    }
+
+    .project-external-btn:hover {
+        background: #1d6bf3;
+        color: #ffffff;
+        transform: scale(1.1);
+    }
+
+    .project-body {
+        padding: 22px 24px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-category-badge {
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 16px;
+        display: inline-block;
+        margin-bottom: 12px;
+        align-self: flex-start;
+    }
+
+    .project-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 8px;
+        line-height: 1.35;
+    }
+
+    .project-short-desc {
+        color: #475467;
+        font-size: 13.5px;
+        line-height: 1.55;
+        margin-bottom: 16px;
+    }
+
+    .project-tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: auto;
+    }
+
+    .project-tech-pill {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        color: #475467;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 3px 10px;
+        border-radius: 8px;
+    }
+
+    .project-footer-actions {
+        border-top: 1px solid #f1f5f9;
+        display: flex;
+        align-items: center;
+        padding: 14px 24px;
+    }
+
+    .project-action-btn {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: #2563eb;
+        font-size: 13.5px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .project-action-btn:hover {
+        color: #1d4ed8;
+    }
+
+    .project-action-divider {
+        width: 1px;
+        height: 20px;
+        background: #e2e8f0;
+    }
+
+    /* CTA Banner: "Have a project in mind?" */
+    .cta-project-box {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 18px;
+        padding: 20px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        box-shadow: 0 4px 20px rgba(15, 41, 77, 0.04);
+        max-width: 680px;
+        margin: 50px auto 0 auto;
+    }
+
+    .cta-icon-folder {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        background: #eff6ff;
+        color: #2563eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+    }
+
+    .cta-text h4 {
+        font-size: 17px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 2px 0;
+    }
+
+    .cta-text p {
+        font-size: 13.5px;
+        color: #64748b;
+        margin: 0;
+    }
+
+    /* Modern Services Section UI */
+    .service-card {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 4px 20px rgba(15, 41, 77, 0.04);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 14px 35px rgba(45, 114, 255, 0.12);
+        border-color: #cbd5e1;
+    }
+
+    .service-icon-box {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: #eff6ff;
+        color: #2563eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+    .service-card-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 6px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .service-card-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 32px;
+        height: 2.5px;
+        background: #2563eb;
+        border-radius: 2px;
+    }
+
+    .service-card-desc {
+        color: #475467;
+        font-size: 13.5px;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .service-tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: auto;
+    }
+
+    .service-tech-tag {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        color: #475467;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 4px 12px;
+        border-radius: 14px;
+    }
+
+    /* Process Flow Banner */
+    .process-card-box {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 20px;
+        padding: 26px 28px;
+        box-shadow: 0 4px 20px rgba(15, 41, 77, 0.04);
+        height: 100%;
+    }
+
+    .process-step-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        flex: 1;
+    }
+
+    .process-step-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #1d6bf3;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        box-shadow: 0 4px 14px rgba(29, 107, 243, 0.3);
+        margin-bottom: 12px;
+    }
+
+    .process-step-title {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 4px;
+    }
+
+    .process-step-desc {
+        font-size: 11.5px;
+        color: #64748b;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .process-connector {
+        color: #cbd5e1;
+        font-size: 18px;
+        align-self: center;
+        margin-bottom: 20px;
+    }
+
+    /* Technologies Grid Box */
+    .tech-grid-box {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 20px;
+        padding: 26px 28px;
+        box-shadow: 0 4px 20px rgba(15, 41, 77, 0.04);
+        height: 100%;
+    }
+
+    .tech-mini-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 12px;
+    }
+
+    .tech-mini-item {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 12px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        transition: transform 0.2s ease;
+    }
+
+    .tech-mini-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(45, 114, 255, 0.1);
+    }
+
+    .tech-mini-item img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+    }
+
+    /* Blue Primary CTA Banner */
+    .blue-cta-banner {
+        background: #1d6bf3;
+        border-radius: 20px;
+        padding: 28px 36px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        box-shadow: 0 8px 30px rgba(29, 107, 243, 0.25);
+    }
+
+    .blue-cta-banner .cta-icon-wrap {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #ffffff;
+        color: #1d6bf3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+    }
+
+    .blue-cta-banner h3 {
+        font-size: 19px;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0 0 4px 0;
+    }
+
+    .blue-cta-banner p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.85);
+        margin: 0;
+    }
+
+    /* Modern Contact Section UI */
+    .contact-info-card {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 20px;
+        padding: 26px 28px;
+        box-shadow: 0 4px 20px rgba(15, 41, 77, 0.04);
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .contact-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .contact-info-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #eff6ff;
+        color: #2563eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
+    }
+
+    .contact-info-content h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 4px 0;
+    }
+
+    .contact-info-content p {
+        font-size: 13.5px;
+        color: #475467;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .contact-map-card {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(15, 41, 77, 0.04);
+        height: 250px;
+        margin-top: 24px;
+    }
+
+    .contact-map-card iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .contact-form-card {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 20px;
+        padding: 28px 32px;
+        box-shadow: 0 4px 20px rgba(15, 41, 77, 0.04);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .contact-form-card form {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .contact-form-card form .row {
+        flex-grow: 1;
+    }
+
+    .contact-form-card .textarea-col {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .contact-form-card .textarea-col .contact-input-icon-wrap {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        height: 100%;
+    }
+
+    .contact-form-card .textarea-col textarea {
+        flex-grow: 1;
+        min-height: 170px;
+        height: 100%;
+    }
+
+    .contact-input-icon-wrap {
+        position: relative;
+    }
+
+    .contact-input-icon-wrap i {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        transform: translateY(-50%);
+        color: #2563eb;
+        font-size: 17px;
+        pointer-events: none;
+    }
+
+    .contact-input-icon-wrap.textarea-wrap i {
+        top: 20px;
+        transform: none;
+    }
+
+    .contact-input-icon-wrap .form-control {
+        padding-left: 44px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        background: #ffffff;
+        font-size: 14px;
+        color: #0f172a;
+        transition: all 0.2s ease;
+    }
+
+    .contact-input-icon-wrap .form-control:focus {
+        border-color: #1d6bf3;
+        box-shadow: 0 0 0 4px rgba(29, 107, 243, 0.1);
+        outline: none;
+    }
+
+    .btn-contact-submit {
+        background: #1d6bf3;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 13px 28px;
+        border-radius: 12px;
+        border: none;
+        width: 100%;
+        box-shadow: 0 6px 18px rgba(29, 107, 243, 0.28);
+        transition: all 0.25s ease;
+    }
+
+    .btn-contact-submit:hover {
+        background: #1557d0;
+        box-shadow: 0 8px 24px rgba(29, 107, 243, 0.38);
+        transform: translateY(-1px);
+    }
+
+    .contact-security-text {
+        font-size: 12.5px;
+        color: #64748b;
+        margin-top: 14px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .contact-cta-soft-banner {
+        background: #f0f7ff;
+        border: 1px solid #dbeafe;
+        border-radius: 20px;
+        padding: 22px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: 36px;
+    }
+
+    .contact-cta-soft-banner .cta-icon-wrap {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #ffffff;
+        color: #1d6bf3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        box-shadow: 0 4px 12px rgba(29, 107, 243, 0.12);
+        flex-shrink: 0;
+    }
+
+    .contact-cta-soft-banner h4 {
+        font-size: 16.5px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 3px 0;
+    }
+
+    .contact-cta-soft-banner p {
+        font-size: 13.5px;
+        color: #475467;
+        margin: 0;
+    }
+
     @media (max-width: 991.98px) {
         .skills-grid {
             grid-template-columns: 1fr;
@@ -1300,35 +1928,88 @@
 
     <section id="portfolio" class="portfolio section light-background">
         <div class="container section-title" data-aos="fade-up">
-            <h2>Portfolio</h2>
-            <p>Projects mapped from your updated plan and ready to be managed from the admin panel.</p>
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div>
+                    <h2>Portfolio</h2>
+                    <p>Projects mapped from your updated plan and ready to be managed from the admin panel.</p>
+                </div>
+                <div class="portfolio-filters-wrap">
+                    <button class="portfolio-filter-btn active" data-filter="*">All Projects</button>
+                    <button class="portfolio-filter-btn" data-filter=".filter-web">Web Apps</button>
+                    <button class="portfolio-filter-btn" data-filter=".filter-ai">AI / ML</button>
+                    <button class="portfolio-filter-btn" data-filter=".filter-tool">Tools</button>
+                    <button class="portfolio-filter-btn" data-filter=".filter-other">Others</button>
+                </div>
+            </div>
         </div>
 
-        <div class="container">
-            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-4 isotope-container">
                 @forelse ($projects as $project)
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-                        <div class="portfolio-content h-100">
-                            <img src="{{ $project->image_path ? asset('storage/' . $project->image_path) : asset('assets/img/portfolio/app-1.jpg') }}" class="img-fluid" alt="{{ $project->title }}">
-                            <div class="portfolio-info">
-                                <h4>{{ $project->title }}</h4>
-                                <p>{{ $project->category }}</p>
-                                <a href="{{ $project->image_path ? asset('storage/' . $project->image_path) : asset('assets/img/portfolio/app-1.jpg') }}" title="{{ $project->title }}" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                @if ($project->external_link)
-                                    <a href="{{ $project->external_link }}" title="Open project" class="details-link" target="_blank" rel="noreferrer"><i class="bi bi-link-45deg"></i></a>
-                                @endif
+                    @php
+                        $catFilter = match (strtolower($project->category)) {
+                            'web application', 'web app' => 'filter-web',
+                            'ai / ml', 'ai', 'ml' => 'filter-ai',
+                            'tool', 'tools' => 'filter-tool',
+                            default => 'filter-other',
+                        };
+                        $imgPath = $project->image_path ? asset($project->image_path) : asset('assets/img/portfolio/app-1.jpg');
+                        $techPills = $project->tech_stack ? array_map('trim', explode(',', $project->tech_stack)) : ['Laravel', 'React.js', 'MySQL', 'Tailwind CSS'];
+                    @endphp
+                    <div class="col-lg-4 col-md-6 isotope-item {{ $catFilter }}">
+                        <div class="project-card">
+                            <div>
+                                <div class="project-img-wrap">
+                                    <img src="{{ $imgPath }}" alt="{{ $project->title }}">
+                                    @if ($project->external_link)
+                                        <a href="{{ $project->external_link }}" target="_blank" rel="noreferrer" class="project-external-btn" title="Live Preview">
+                                            <i class="bi bi-box-arrow-up-right"></i>
+                                        </a>
+                                    @endif
+                                </div>
+                                <div class="project-body">
+                                    <span class="project-category-badge">{{ $project->category }}</span>
+                                    <h3 class="project-title">{{ $project->title }}</h3>
+                                    <p class="project-short-desc">{{ $project->short_description }}</p>
+                                    <div class="project-tech-list">
+                                        @foreach ($techPills as $tech)
+                                            <span class="project-tech-pill">{{ $tech }}</span>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="pt-3">
-                            <h5>{{ $project->title }}</h5>
-                            <p>{{ $project->short_description }}</p>
+                            <div class="project-footer-actions">
+                                <a href="{{ $project->external_link ?? '#' }}" target="_blank" rel="noreferrer" class="project-action-btn">
+                                    <span>View Details</span> <i class="bi bi-arrow-right"></i>
+                                </a>
+                                <div class="project-action-divider"></div>
+                                <a href="{{ $project->github_link ?? 'https://github.com/piyush-gupta2003' }}" target="_blank" rel="noreferrer" class="project-action-btn text-dark">
+                                    <i class="bi bi-github"></i> <span>GitHub</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 @empty
                     <div class="col-12">
-                        <p>No projects have been published yet.</p>
+                        <p class="text-center text-muted">No projects have been published yet.</p>
                     </div>
                 @endforelse
+            </div>
+
+            <!-- Call-To-Action Banner: Have a project in mind? -->
+            <div class="cta-project-box">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="cta-icon-folder">
+                        <i class="bi bi-folder2-open"></i>
+                    </div>
+                    <div class="cta-text">
+                        <h4>Have a project in mind?</h4>
+                        <p>Let's build something amazing together.</p>
+                    </div>
+                </div>
+                <a href="#contact" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-send-fill"></i> <span>Get In Touch</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1336,22 +2017,110 @@
     <section id="services" class="services section">
         <div class="container section-title" data-aos="fade-up">
             <h2>Services</h2>
-            <p>Offerings managed in the portfolio backend.</p>
+            <p>Solutions I build to help businesses and individuals transform ideas into powerful digital products.</p>
         </div>
 
-        <div class="container">
-            <div class="row gy-4">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <!-- 1. Top Grid of 3 Service Cards -->
+            <div class="row g-4 mb-4">
+                @php
+                    $serviceTechTags = [
+                        'Full Stack Web Development' => ['React.js', 'Next.js', 'Laravel', 'Node.js', 'MySQL', 'Tailwind CSS'],
+                        'AI-Powered Applications' => ['Python', 'LangChain', 'RAG', 'Gemini API', 'FAISS', 'Vector DB'],
+                        'REST API & Dashboard Development' => ['REST API', 'Express.js', 'Laravel', 'JWT Auth', 'MySQL', 'Dashboard'],
+                    ];
+                @endphp
                 @foreach ($services as $service)
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                        <div class="service-item position-relative">
-                            <div class="icon">
-                                <i class="{{ $service->icon }}"></i>
+                    @php
+                        $tags = $serviceTechTags[$service->title] ?? ['Web Apps', 'APIs', 'Database', 'Cloud'];
+                    @endphp
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-card">
+                            <div>
+                                <div class="service-icon-box">
+                                    <i class="{{ $service->icon }}"></i>
+                                </div>
+                                <h3 class="service-card-title">{{ $service->title }}</h3>
+                                <p class="service-card-desc">{{ $service->description }}</p>
                             </div>
-                            <h3>{{ $service->title }}</h3>
-                            <p>{{ $service->description }}</p>
+                            <div class="service-tech-tags">
+                                @foreach ($tags as $tag)
+                                    <span class="service-tech-tag">{{ $tag }}</span>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <!-- 2. Middle Grid: My Process & Technologies I Work With -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-7">
+                    <div class="process-card-box">
+                        <h3 class="fw-bold mb-4" style="font-size: 18px; color: #0f172a;">My Process</h3>
+                        <div class="d-flex align-items-center justify-content-between gap-2">
+                            <div class="process-step-item">
+                                <div class="process-step-icon"><i class="bi bi-chat-text-fill"></i></div>
+                                <span class="process-step-title">01. Discuss</span>
+                                <p class="process-step-desc">Understand your requirements</p>
+                            </div>
+                            <span class="process-connector">⇢</span>
+                            <div class="process-step-item">
+                                <div class="process-step-icon"><i class="bi bi-lightbulb-fill"></i></div>
+                                <span class="process-step-title">02. Plan</span>
+                                <p class="process-step-desc">Plan architecture &amp; tech stack</p>
+                            </div>
+                            <span class="process-connector">⇢</span>
+                            <div class="process-step-item">
+                                <div class="process-step-icon"><i class="bi bi-code-slash"></i></div>
+                                <span class="process-step-title">03. Build</span>
+                                <p class="process-step-desc">Develop with clean code</p>
+                            </div>
+                            <span class="process-connector">⇢</span>
+                            <div class="process-step-item">
+                                <div class="process-step-icon"><i class="bi bi-rocket-takeoff-fill"></i></div>
+                                <span class="process-step-title">04. Deploy</span>
+                                <p class="process-step-desc">Test, deploy &amp; deliver on time</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="tech-grid-box">
+                        <h3 class="fw-bold mb-4" style="font-size: 18px; color: #0f172a;">Technologies I Work With</h3>
+                        <div class="tech-mini-grid">
+                            <div class="tech-mini-item" title="React.js"><img src="{{ asset('assets/img/assets_logo/react.svg') }}" alt="React"></div>
+                            <div class="tech-mini-item" title="Next.js"><img src="{{ asset('assets/img/assets_logo/nextjs.svg') }}" alt="Next.js"></div>
+                            <div class="tech-mini-item" title="TypeScript"><img src="{{ asset('assets/img/assets_logo/typescript.svg') }}" alt="TypeScript"></div>
+                            <div class="tech-mini-item" title="Node.js"><img src="{{ asset('assets/img/assets_logo/node.svg') }}" alt="Node.js"></div>
+                            <div class="tech-mini-item" title="Laravel"><img src="{{ asset('assets/img/assets_logo/laravel.svg') }}" alt="Laravel"></div>
+                            <div class="tech-mini-item" title="Python"><img src="{{ asset('assets/img/assets_logo/python.svg') }}" alt="Python"></div>
+                            <div class="tech-mini-item" title="MySQL"><img src="{{ asset('assets/img/assets_logo/mysql.svg') }}" alt="MySQL"></div>
+                            <div class="tech-mini-item" title="PostgreSQL"><img src="{{ asset('assets/img/assets_logo/postgres.svg') }}" alt="PostgreSQL"></div>
+                            <div class="tech-mini-item" title="MongoDB"><img src="{{ asset('assets/img/assets_logo/mongo.svg') }}" alt="MongoDB"></div>
+                            <div class="tech-mini-item" title="Tailwind CSS"><img src="{{ asset('assets/img/assets_logo/tailwind.svg') }}" alt="Tailwind"></div>
+                            <div class="tech-mini-item" title="Git"><img src="{{ asset('assets/img/assets_logo/git.svg') }}" alt="Git"></div>
+                            <div class="tech-mini-item" title="Docker"><img src="{{ asset('assets/img/assets_logo/docker.svg') }}" alt="Docker"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Bottom Blue Call-To-Action Banner -->
+            <div class="blue-cta-banner">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="cta-icon-wrap">
+                        <i class="bi bi-send-fill"></i>
+                    </div>
+                    <div>
+                        <h3>Have a project in mind?</h3>
+                        <p>Let's build something amazing together.</p>
+                    </div>
+                </div>
+                <a href="#contact" class="btn btn-light rounded-pill px-4 py-2 text-primary fw-bold d-inline-flex align-items-center gap-2">
+                    <span>Get In Touch</span> <i class="bi bi-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -1359,63 +2128,112 @@
     <section id="contact" class="contact section">
         <div class="container section-title" data-aos="fade-up">
             <h2>Contact</h2>
-            <p>Send a message and it will be stored in the admin-ready contact table.</p>
+            <p>Have a project in mind or want to work together? Send me a message — I'll get back to you as soon as possible.</p>
         </div>
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row gy-4">
+            <div class="row g-4">
+                <!-- Left Column: Info Card & Embedded Google Map -->
                 <div class="col-lg-5">
-                    <div class="info-wrap">
-                        <div class="info-item d-flex">
-                            <i class="bi bi-geo-alt flex-shrink-0"></i>
-                            <div>
-                                <h3>Location</h3>
-                                <p>{{ $settings['city'] ?? '' }}</p>
+                    <div class="contact-info-card">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h4>Location</h4>
+                                <p>{{ $settings['city'] ?? 'Rajajipuram, Lucknow, Uttar Pradesh 226017, India' }}</p>
                             </div>
                         </div>
-                        <div class="info-item d-flex">
-                            <i class="bi bi-envelope flex-shrink-0"></i>
-                            <div>
-                                <h3>Email</h3>
-                                <p>{{ $settings['email'] ?? '' }}</p>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h4>Email</h4>
+                                <p>{{ $settings['email'] ?? 'piyushgupta422003@gmail.com' }}</p>
                             </div>
                         </div>
-                        <div class="info-item d-flex">
-                            <i class="bi bi-phone flex-shrink-0"></i>
-                            <div>
-                                <h3>Phone</h3>
-                                <p>{{ $settings['phone'] ?? '' }}</p>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h4>Phone</h4>
+                                <p>{{ $settings['phone'] ?? '+91 9555620175' }}</p>
                             </div>
                         </div>
                     </div>
+
+                    <div class="contact-map-card">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14240.23157147585!2d80.8758804!3d26.8378942!2m3!1f0!0f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfc138eb15967%3A0xbca89547d639b70b!2sRajajipuram%2C%20Lucknow%2C%20Uttar%20Pradesh%20226017!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
 
+                <!-- Right Column: Interactive Contact Form Card -->
                 <div class="col-lg-7">
-                    @if (session('status'))
-                        <div class="alert alert-success">{{ session('status') }}</div>
-                    @endif
+                    <div class="contact-form-card">
+                        @if (session('status'))
+                            <div class="alert alert-success rounded-3 mb-4"><i class="bi bi-check-circle-fill me-2"></i>{{ session('status') }}</div>
+                        @endif
 
-                    <form action="{{ route('contact.store') }}" method="post">
-                        @csrf
-                        <div class="row gy-4">
-                            <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" value="{{ old('name') }}" required>
+                        <form action="{{ route('contact.store') }}" method="post">
+                            @csrf
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="contact-input-icon-wrap">
+                                        <i class="bi bi-person"></i>
+                                        <input type="text" name="name" class="form-control py-3" placeholder="Your Name" value="{{ old('name') }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="contact-input-icon-wrap">
+                                        <i class="bi bi-envelope"></i>
+                                        <input type="email" class="form-control py-3" name="email" placeholder="Your Email" value="{{ old('email') }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="contact-input-icon-wrap">
+                                        <i class="bi bi-tag"></i>
+                                        <input type="text" class="form-control py-3" name="subject" placeholder="Subject" value="{{ old('subject') }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 textarea-col">
+                                    <div class="contact-input-icon-wrap textarea-wrap">
+                                        <i class="bi bi-chat-dots"></i>
+                                        <textarea class="form-control pt-3" name="message" rows="7" placeholder="Your Message" required>{{ old('message') }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-contact-submit">
+                                        <i class="bi bi-send-fill me-2"></i> Send Message
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" placeholder="Your Email" value="{{ old('email') }}" required>
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject" value="{{ old('subject') }}" required>
-                            </div>
-                            <div class="col-md-12">
-                                <textarea class="form-control" name="message" rows="8" placeholder="Message" required>{{ old('message') }}</textarea>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Send Message</button>
-                            </div>
+                        </form>
+                        <div class="contact-security-text">
+                            <i class="bi bi-lock-fill text-success"></i> Your information is safe with me. I'll never share your details.
                         </div>
-                    </form>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Bottom Banner: Let's build something amazing together! -->
+            <div class="contact-cta-soft-banner">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="cta-icon-wrap">
+                        <i class="bi bi-send-fill"></i>
+                    </div>
+                    <div>
+                        <h4>Let's build something amazing together!</h4>
+                        <p>I'm available for freelance projects, internships, and full-time opportunities.</p>
+                    </div>
+                </div>
+                <a href="mailto:{{ $settings['email'] ?? 'piyushgupta422003@gmail.com' }}" class="btn btn-light border-primary rounded-pill px-4 py-2 text-primary fw-semibold d-inline-flex align-items-center gap-2">
+                    <span>Get In Touch</span> <i class="bi bi-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>

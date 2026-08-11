@@ -51,6 +51,8 @@ return new class extends Migration
             $table->longText('long_description')->nullable();
             $table->string('image_path')->nullable();
             $table->string('external_link')->nullable();
+            $table->string('github_link')->nullable();
+            $table->string('tech_stack')->nullable();
             $table->boolean('featured')->default(false);
             $table->unsignedInteger('sort_order')->default(0);
             $table->timestamps();
