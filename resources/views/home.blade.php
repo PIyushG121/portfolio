@@ -15,15 +15,61 @@
         ['icon' => 'bi bi-cpu', 'title' => 'AI & Automation', 'text' => 'Integrating AI solutions and automation to solve real-world problems.'],
         ['icon' => 'bi bi-database', 'title' => 'Database Management', 'text' => 'Designing efficient database schemas and optimizing queries.'],
     ];
-    $techStack = [
-        ['icon' => 'bi bi-filetype-jsx', 'label' => 'React.js'],
-        ['icon' => 'bi bi-layers', 'label' => 'Next.js'],
-        ['icon' => 'bi bi-braces', 'label' => 'Laravel'],
-        ['icon' => 'bi bi-boxes', 'label' => 'Node.js'],
-        ['icon' => 'bi bi-database', 'label' => 'MySQL'],
-        ['icon' => 'bi bi-server', 'label' => 'MongoDB'],
-        ['icon' => 'bi bi-wind', 'label' => 'Tailwind CSS'],
-        ['icon' => 'bi bi-github', 'label' => 'Git & GitHub'],
+    $techStackRow1 = [
+        ['label' => 'React.js', 'icon' => 'assets/img/assets_logo/react.svg'],
+        ['label' => 'Next.js', 'icon' => 'assets/img/assets_logo/nextjs.svg'],
+        ['label' => 'TypeScript', 'icon' => 'assets/img/assets_logo/typescript.svg'],
+        ['label' => 'Tailwind CSS', 'icon' => 'assets/img/assets_logo/tailwind.svg'],
+        ['label' => 'Laravel', 'icon' => 'assets/img/assets_logo/laravel.svg'],
+        ['label' => 'Node.js', 'icon' => 'assets/img/assets_logo/node.svg'],
+        ['label' => 'Express.js', 'icon' => 'assets/img/assets_logo/express.svg'],
+        ['label' => 'MySQL', 'icon' => 'assets/img/assets_logo/mysql.svg'],
+    ];
+
+    $techStackRow2 = [
+        ['label' => 'MongoDB', 'icon' => 'assets/img/assets_logo/mongo.svg'],
+        ['label' => 'PostgreSQL', 'icon' => 'assets/img/assets_logo/postgres.svg'],
+        ['label' => 'Git', 'icon' => 'assets/img/assets_logo/git.svg'],
+        ['label' => 'GitHub', 'icon' => 'assets/img/assets_logo/github.svg'],
+        ['label' => 'Docker', 'icon' => 'assets/img/assets_logo/docker.svg'],
+        ['label' => 'Figma', 'icon' => 'assets/img/assets_logo/figma.svg'],
+        ['label' => 'VS Code', 'icon' => 'assets/img/assets_logo/vscode.svg'],
+        ['label' => 'Postman', 'icon' => 'assets/img/assets_logo/postman.svg'],
+    ];
+
+    $skillMeta = [
+        'React.js / Next.js' => [
+            'icon' => 'assets/img/assets_logo/react.svg',
+            'level' => 'Advanced',
+        ],
+        'Laravel' => [
+            'icon' => 'assets/img/assets_logo/laravel.svg',
+            'level' => 'Advanced',
+        ],
+        'JavaScript / TypeScript' => [
+            'icon' => 'assets/img/assets_logo/javascript.svg',
+            'level' => 'Advanced',
+        ],
+        'Node.js' => [
+            'icon' => 'assets/img/assets_logo/node.svg',
+            'level' => 'Strong',
+        ],
+        'Python' => [
+            'icon' => 'assets/img/assets_logo/python.svg',
+            'level' => 'Strong',
+        ],
+        'PHP' => [
+            'icon' => 'assets/img/assets_logo/php.svg',
+            'level' => 'Strong',
+        ],
+        'MySQL / PostgreSQL' => [
+            'icon' => 'assets/img/assets_logo/mysql.svg',
+            'level' => 'Strong',
+        ],
+        'AI/ML (LangChain, Gemini AI, RAG)' => [
+            'icon' => 'assets/img/assets_logo/aiml.svg',
+            'level' => 'Intermediate',
+        ],
     ];
 @endphp
 
@@ -220,26 +266,551 @@
         border-top: 1px solid #eef3f8;
     }
 
-    .tech-pill-grid {
+    .about-tech-card {
+        padding: 24px 28px;
+        overflow: hidden;
+    }
+
+    .about-card-title .icon-code {
+        color: #2d72ff;
+        font-weight: 800;
+        font-family: monospace;
+        font-size: 22px;
+        letter-spacing: -1px;
+    }
+
+    .marquee-container {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 16px;
+        position: relative;
+        overflow: hidden;
+        mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        padding: 6px 0;
+    }
+
+    .marquee-row {
+        display: flex;
+        overflow: hidden;
+        user-select: none;
+        width: 100%;
+    }
+
+    .marquee-track {
+        display: flex;
+        flex-shrink: 0;
         gap: 14px;
+        align-items: center;
+        white-space: nowrap;
+        will-change: transform;
+        padding-right: 14px;
+    }
+
+    .marquee-row-left .marquee-track {
+        animation: marquee-left 25s linear infinite;
+    }
+
+    .marquee-row-right .marquee-track {
+        animation: marquee-right 25s linear infinite;
+    }
+
+    .marquee-container:hover .marquee-track {
+        animation-play-state: paused;
+    }
+
+    @keyframes marquee-left {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    @keyframes marquee-right {
+        0% {
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
     }
 
     .tech-pill {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        padding: 12px 18px;
-        border: 1px solid #e5edf8;
+        padding: 10px 18px;
+        border: 1px solid #eef2f6;
         border-radius: 14px;
-        background: #fff;
-        color: #344054;
+        background: #ffffff;
+        color: #334155;
         font-weight: 500;
-        box-shadow: 0 8px 20px rgba(15, 41, 77, 0.04);
+        font-size: 15px;
+        box-shadow: 0 4px 12px rgba(15, 41, 77, 0.04);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+
+    .tech-pill:hover {
+        transform: translateY(-2px) scale(1.03);
+        border-color: #cbd5e1;
+        box-shadow: 0 8px 20px rgba(45, 114, 255, 0.12);
+        background: #f8fafc;
+    }
+
+    .tech-pill img,
+    .tech-pill svg {
+        flex-shrink: 0;
+        display: block;
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .skill-card {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 16px;
+        box-shadow: 0 4px 18px rgba(15, 41, 77, 0.04);
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .skill-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(45, 114, 255, 0.09);
+        border-color: #cbd5e1;
+    }
+
+    .skill-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .skill-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+    }
+
+    .skill-title-wrap img,
+    .skill-title-wrap svg {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .skill-title-wrap span {
+        font-size: 16px;
+        font-weight: 700;
+        color: #0f172a;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .skill-stats {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+    }
+
+    .skill-percent {
+        font-size: 15px;
+        font-weight: 800;
+        color: #0f172a;
+    }
+
+    .skill-level-badge {
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+    .skill-bar-wrap {
+        background: #f1f5f9;
+        height: 7px;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .skill-bar-fill {
+        background: #2d72ff;
+        height: 100%;
+        border-radius: 10px;
+        transition: width 1s ease-in-out;
+    }
+
+    /* Modern Resume Section UI */
+    .resume-timeline-col {
+        position: relative;
+        padding-left: 28px;
+    }
+
+    .resume-timeline-col::before {
+        content: "";
+        position: absolute;
+        top: 60px;
+        bottom: 20px;
+        left: 8px;
+        width: 3px;
+        background: linear-gradient(180deg, #2d72ff 0%, #cbd5e1 100%);
+        border-radius: 4px;
+    }
+
+    .resume-header-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 28px;
+    }
+
+    .resume-header-badge .header-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: #eff6ff;
+        color: #2563eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+    }
+
+    .resume-header-badge h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0;
+    }
+
+    .resume-card-wrap {
+        position: relative;
+        margin-bottom: 24px;
+    }
+
+    .resume-card-wrap::before {
+        content: "";
+        position: absolute;
+        left: -28px;
+        top: 24px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 3.5px solid #2d72ff;
+        box-shadow: 0 0 0 4px rgba(45, 114, 255, 0.15);
+        z-index: 2;
+    }
+
+    .resume-card {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 18px;
+        padding: 24px 28px;
+        box-shadow: 0 4px 20px rgba(15, 41, 77, 0.04);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .resume-card:hover {
+        transform: translateX(4px);
+        box-shadow: 0 10px 30px rgba(45, 114, 255, 0.1);
+        border-color: #cbd5e1;
+    }
+
+    .resume-card-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 8px;
+    }
+
+    .resume-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+
+    .resume-date-badge {
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 4px 14px;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .resume-company {
+        color: #475467;
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .resume-description-text {
+        color: #334155;
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .resume-bullet-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .resume-bullet-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: #334155;
+        font-size: 14.5px;
+        line-height: 1.65;
+    }
+
+    .resume-bullet-list li i {
+        color: #2563eb;
+        font-size: 16px;
+        margin-top: 2px;
+        flex-shrink: 0;
+    }
+
+    /* Modern Certifications & Achievements Section UI */
+    .cert-card {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(15, 41, 77, 0.04);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+    }
+
+    .cert-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(45, 114, 255, 0.1);
+        border-color: #cbd5e1;
+    }
+
+    .cert-card-top {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .cert-icon-sq {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: #1d6bf3;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+        box-shadow: 0 6px 16px rgba(29, 107, 243, 0.25);
+    }
+
+    .cert-info h3 {
+        font-size: 17px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 4px;
+    }
+
+    .cert-issuer {
+        color: #2563eb;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .cert-desc {
+        color: #475467;
+        font-size: 13.5px;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .cert-footer-badge {
+        background: #f0f7ff;
+        border-radius: 10px;
+        padding: 8px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12.5px;
+        font-weight: 600;
+        color: #2563eb;
+    }
+
+    .cert-footer-badge .badge-left {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .cert-footer-badge .badge-right {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #16a34a;
+    }
+
+    /* Achievements Metric Pastel Cards */
+    .achievement-card {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 16px;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        box-shadow: 0 4px 14px rgba(15, 41, 77, 0.03);
+        transition: all 0.25s ease;
+        height: 100%;
+    }
+
+    .achievement-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(45, 114, 255, 0.08);
+    }
+
+    .achievement-icon-wrap {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
+    }
+
+    .achievement-icon-blue { background: #eff6ff; color: #2563eb; }
+    .achievement-icon-green { background: #f0fdf4; color: #16a34a; }
+    .achievement-icon-purple { background: #f5f3ff; color: #7c3aed; }
+    .achievement-icon-orange { background: #fff7ed; color: #ea580c; }
+
+    .achievement-content h4 {
+        font-size: 20px;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .achievement-content .ach-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .achievement-content p {
+        font-size: 12px;
+        color: #64748b;
+        margin: 2px 0 0 0;
+    }
+
+    /* Featured Certificates Gallery */
+    .featured-cert-card {
+        background: #ffffff;
+        border: 1px solid #eef2f6;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(15, 41, 77, 0.04);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .featured-cert-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(45, 114, 255, 0.12);
+    }
+
+    .featured-cert-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+
+    .featured-cert-card:hover img {
+        transform: scale(1.03);
+    }
+
+    .featured-cert-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .featured-cert-card:hover .featured-cert-overlay {
+        opacity: 1;
+    }
+
+    .featured-cert-overlay i {
+        font-size: 28px;
+        color: #ffffff;
+        background: #2563eb;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
     }
 
     @media (max-width: 991.98px) {
+        .skills-grid {
+            grid-template-columns: 1fr;
+        }
         .about-highlight-list,
         .about-detail-grid {
             grid-template-columns: 1fr;
@@ -270,9 +841,16 @@
         <h1 class="sitename">{{ $settings['name'] ?? 'Portfolio' }}</h1>
     </a>
 
-    <div class="social-links text-center">
-        <a href="{{ $settings['github'] ?? '#' }}" class="facebook" target="_blank" rel="noreferrer"><i class="bi bi-github"></i></a>
-        <a href="{{ $settings['linkedin'] ?? '#' }}" class="linkedin" target="_blank" rel="noreferrer"><i class="bi bi-linkedin"></i></a>
+    <div class="social-links text-center d-flex justify-content-center align-items-center gap-2">
+        <a href="{{ $settings['github'] ?? '#' }}" target="_blank" rel="noreferrer" title="GitHub" class="d-inline-flex align-items-center justify-content-center">
+            <img src="{{ asset('assets/img/assets_logo/github.svg') }}" alt="GitHub" width="20" height="20">
+        </a>
+        <a href="{{ $settings['linkedin'] ?? '#' }}" target="_blank" rel="noreferrer" title="LinkedIn" class="d-inline-flex align-items-center justify-content-center">
+            <img src="{{ asset('assets/img/assets_logo/linkedin.svg') }}" alt="LinkedIn" width="20" height="20">
+        </a>
+        <a href="mailto:{{ $settings['email'] ?? 'contact@example.com' }}" target="_blank" rel="noreferrer" title="Email" class="d-inline-flex align-items-center justify-content-center">
+            <img src="{{ asset('assets/img/assets_logo/mail.svg') }}" alt="Email" width="20" height="20">
+        </a>
     </div>
 
     <nav id="navmenu" class="navmenu">
@@ -283,6 +861,7 @@
             <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
             <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
             <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
+            <li><a href="#certifications"><i class="bi bi-award navicon"></i> Certifications</a></li>
             <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
         </ul>
     </nav>
@@ -420,17 +999,32 @@
 
             <div class="about-tech-card">
                 <div class="about-card-title mb-3">
-                    <i class="bi bi-code-slash"></i>
-                    <span>Technologies I Work With</span>
+                    <span class="icon-code">&lt;/&gt;</span>
+                    <span>Technologies & Tools</span>
                 </div>
 
-                <div class="tech-pill-grid">
-                    @foreach ($techStack as $tech)
-                        <div class="tech-pill">
-                            <i class="{{ $tech['icon'] }}"></i>
-                            <span>{{ $tech['label'] }}</span>
+                <div class="marquee-container">
+                    <div class="marquee-row marquee-row-left">
+                        <div class="marquee-track">
+                            @foreach (array_merge($techStackRow1, $techStackRow1) as $tech)
+                                <div class="tech-pill">
+                                    <img src="{{ asset($tech['icon']) }}" alt="{{ $tech['label'] }}" width="22" height="22">
+                                    <span>{{ $tech['label'] }}</span>
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
+
+                    <div class="marquee-row marquee-row-right">
+                        <div class="marquee-track">
+                            @foreach (array_merge($techStackRow2, $techStackRow2) as $tech)
+                                <div class="tech-pill">
+                                    <img src="{{ asset($tech['icon']) }}" alt="{{ $tech['label'] }}" width="22" height="22">
+                                    <span>{{ $tech['label'] }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -443,17 +1037,29 @@
         </div>
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row skills-content skills-animation">
-                @foreach ($skills->chunk((int) ceil(max($skills->count(), 1) / 2)) as $column)
-                    <div class="col-lg-6">
-                        @foreach ($column as $skill)
-                            <div class="progress">
-                                <span class="skill"><span>{{ $skill->name }}</span> <i class="val">{{ $skill->percent }}%</i></span>
-                                <div class="progress-bar-wrap">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ $skill->percent }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+            <div class="skills-grid">
+                @foreach ($skills as $skill)
+                    @php
+                        $meta = $skillMeta[$skill->name] ?? [
+                            'icon' => 'assets/img/assets_logo/react.svg',
+                            'level' => ($skill->percent >= 85 ? 'Advanced' : ($skill->percent >= 75 ? 'Strong' : 'Intermediate'))
+                        ];
+                        $level = $meta['level'] ?? ($skill->percent >= 85 ? 'Advanced' : ($skill->percent >= 75 ? 'Strong' : 'Intermediate'));
+                    @endphp
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-title-wrap">
+                                <img src="{{ asset($meta['icon']) }}" alt="{{ $skill->name }}">
+                                <span>{{ $skill->name }}</span>
                             </div>
-                        @endforeach
+                            <div class="skill-stats">
+                                <span class="skill-percent">{{ $skill->percent }}%</span>
+                                <span class="skill-level-badge">{{ $level }}</span>
+                            </div>
+                        </div>
+                        <div class="skill-bar-wrap">
+                            <div class="skill-bar-fill" style="width: {{ $skill->percent }}%;"></div>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -467,58 +1073,227 @@
         </div>
 
         <div class="container">
-            <div class="row">
+            <div class="row g-4">
                 <div class="col-lg-6" data-aos="fade-up">
-                    <h3 class="resume-title">Education</h3>
-                    @foreach ($educations as $education)
-                        <div class="resume-item">
-                            <h4>{{ $education->degree }}</h4>
-                            <h5>{{ $education->years }}</h5>
-                            <p><em>{{ $education->institution }}</em></p>
-                            <p>{{ $education->description }}</p>
+                    <div class="resume-timeline-col">
+                        <div class="resume-header-badge">
+                            <div class="header-icon"><i class="bi bi-mortarboard-fill"></i></div>
+                            <h3>Education</h3>
                         </div>
-                    @endforeach
-                </div>
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="resume-title">Experience</h3>
-                    @foreach ($experiences as $experience)
-                        <div class="resume-item">
-                            <h4>{{ $experience->title }}</h4>
-                            <h5>{{ $experience->years }}</h5>
-                            <p><em>{{ $experience->company }}</em></p>
-                            <ul>
-                                @foreach (preg_split('/\r\n|\r|\n/', (string) $experience->description) as $line)
-                                    @if (trim($line) !== '')
-                                        <li>{{ $line }}</li>
+                        @foreach ($educations as $education)
+                            <div class="resume-card-wrap">
+                                <div class="resume-card">
+                                    <h4 class="resume-card-title">{{ $education->degree }}</h4>
+                                    <div class="resume-meta-row">
+                                        <span class="resume-date-badge">
+                                            <i class="bi bi-calendar3"></i> {{ $education->years }}
+                                        </span>
+                                        <span class="resume-company">
+                                            <i class="bi bi-building"></i> {{ $education->institution }}
+                                        </span>
+                                    </div>
+                                    @if ($education->description)
+                                        <p class="resume-description-text">{{ $education->description }}</p>
                                     @endif
-                                @endforeach
-                            </ul>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="resume-timeline-col">
+                        <div class="resume-header-badge">
+                            <div class="header-icon"><i class="bi bi-briefcase-fill"></i></div>
+                            <h3>Experience</h3>
                         </div>
-                    @endforeach
+                        @foreach ($experiences as $experience)
+                            <div class="resume-card-wrap">
+                                <div class="resume-card">
+                                    <h4 class="resume-card-title">{{ $experience->title }}</h4>
+                                    <div class="resume-meta-row">
+                                        <span class="resume-date-badge">
+                                            <i class="bi bi-calendar3"></i> {{ $experience->years }}
+                                        </span>
+                                        <span class="resume-company">
+                                            <i class="bi bi-building-fill-gear"></i> {{ $experience->company }}
+                                        </span>
+                                    </div>
+                                    <ul class="resume-bullet-list">
+                                        @foreach (preg_split('/\r\n|\r|\n/', (string) $experience->description) as $line)
+                                            @if (trim($line) !== '')
+                                                <li>
+                                                    <i class="bi bi-check2-circle"></i>
+                                                    <span>{{ ltrim(trim($line), '•- ') }}</span>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="certifications" class="services section">
+    <section id="certifications" class="certifications section">
         <div class="container section-title" data-aos="fade-up">
-            <h2>Certifications & Achievements</h2>
-            <p>Highlights that strengthen the portfolio beyond project screenshots.</p>
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div>
+                    <h2>Certifications & Achievements</h2>
+                    <p>Highlights that strengthen the portfolio beyond project screenshots.</p>
+                </div>
+            </div>
         </div>
 
-        <div class="container">
-            <div class="row gy-4">
-                @foreach ($certifications as $certification)
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                        <div class="service-item position-relative h-100">
-                            <div class="icon">
-                                <i class="bi bi-patch-check"></i>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <!-- 1. Top Grid of Certification Cards -->
+            <div class="row g-4 mb-5">
+                @php
+                    $certData = [
+                        [
+                            'title' => 'Cybersecurity Fundamentals',
+                            'issuer' => 'IBM SkillsBuild',
+                            'desc' => 'Gained foundational knowledge of cybersecurity principles, threats, security controls, and best practices.',
+                            'icon' => 'bi bi-shield-check',
+                            'date' => 'Jan 2025',
+                            'image' => 'assets/img/certificates/cert-1.svg',
+                        ],
+                        [
+                            'title' => 'AI & Machine Learning Bootcamp',
+                            'issuer' => 'LearnTrail',
+                            'desc' => 'Learned core ML concepts, model building, data preprocessing, and real-world AI applications.',
+                            'icon' => 'bi bi-cpu-fill',
+                            'date' => 'Mar 2025',
+                            'image' => 'assets/img/certificates/cert-2.svg',
+                        ],
+                        [
+                            'title' => 'Best Project Award - Walletry',
+                            'issuer' => 'College / Internal',
+                            'desc' => 'Awarded for developing an innovative and impactful solution with real-world use case and great presentation.',
+                            'icon' => 'bi bi-trophy-fill',
+                            'date' => 'Nov 2024',
+                            'image' => 'assets/img/certificates/cert-3.svg',
+                        ],
+                    ];
+                @endphp
+
+                @foreach ($certifications as $index => $certification)
+                    @php
+                        $fallback = $certData[$index] ?? [
+                            'desc' => 'Verified professional credential and achievement.',
+                            'icon' => 'bi bi-patch-check-fill',
+                            'date' => 'Issued',
+                            'image' => 'assets/img/certificates/cert-1.svg',
+                        ];
+                        $iconClass = $fallback['icon'];
+                        $descText = $fallback['desc'];
+                        $dateText = $certification->issued_at ? $certification->issued_at->format('M Y') : $fallback['date'];
+                    @endphp
+                    <div class="col-lg-4 col-md-6">
+                        <div class="cert-card">
+                            <div class="cert-card-top">
+                                <div class="cert-icon-sq">
+                                    <i class="{{ $iconClass }}"></i>
+                                </div>
+                                <div class="cert-info">
+                                    <h3>{{ $certification->title }}</h3>
+                                    <span class="cert-issuer">{{ $certification->issuer }}</span>
+                                    <p class="cert-desc">{{ $descText }}</p>
+                                </div>
                             </div>
-                            <h3>{{ $certification->title }}</h3>
-                            <p>{{ $certification->issuer }}</p>
+                            <div class="cert-footer-badge">
+                                <span class="badge-left">
+                                    <i class="bi bi-calendar3"></i> Issued: {{ $dateText }}
+                                </span>
+                                <span class="badge-right">
+                                    <i class="bi bi-check-circle-fill"></i> Verified
+                                </span>
+                            </div>
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <!-- 2. Achievements Metric Pastel Banner -->
+            <div class="mb-5">
+                <h3 class="fw-bold mb-3" style="font-size: 20px; color: #0f172a;">Achievements</h3>
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="achievement-card">
+                            <div class="achievement-icon-wrap achievement-icon-blue">
+                                <i class="bi bi-code-slash"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>{{ $settings['stat_projects_shipped'] ?? '3+' }}</h4>
+                                <span class="ach-title">Projects Completed</span>
+                                <p>Delivered end-to-end full stack solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="achievement-card">
+                            <div class="achievement-icon-wrap achievement-icon-green">
+                                <i class="bi bi-rocket-takeoff"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>{{ $settings['stat_internship_months'] ?? '6' }}</h4>
+                                <span class="ach-title">Internship Months</span>
+                                <p>Hands-on experience building real products.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="achievement-card">
+                            <div class="achievement-icon-wrap achievement-icon-purple">
+                                <i class="bi bi-cpu"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>{{ $settings['stat_core_stack'] ?? '8+' }}</h4>
+                                <span class="ach-title">Technologies Used</span>
+                                <p>Worked with modern tech and tools.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="achievement-card">
+                            <div class="achievement-icon-wrap achievement-icon-orange">
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>{{ $settings['stat_certifications'] ?? '2+' }}</h4>
+                                <span class="ach-title">Certifications Earned</span>
+                                <p>Continuously learning and upskilling.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Featured Certificates Image Gallery -->
+            <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="fw-bold m-0" style="font-size: 20px; color: #0f172a;">Featured Certificates</h3>
+                    <a href="#certifications" class="btn btn-outline-primary rounded-pill px-3 py-1 fw-semibold" style="font-size: 14px;">View All Certificates</a>
+                </div>
+                <div class="row g-4">
+                    @foreach ($certifications as $index => $certification)
+                        @php
+                            $fallback = $certData[$index] ?? ['image' => 'assets/img/certificates/cert-1.svg'];
+                            $imgPath = isset($certification->image_path) && $certification->image_path ? asset('storage/' . $certification->image_path) : asset($fallback['image']);
+                        @endphp
+                        <div class="col-lg-4 col-md-6">
+                            <a href="{{ $imgPath }}" data-gallery="cert-gallery" class="glightbox featured-cert-card d-block">
+                                <img src="{{ $imgPath }}" alt="{{ $certification->title }}" class="img-fluid">
+                                <div class="featured-cert-overlay">
+                                    <i class="bi bi-zoom-in"></i>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </section>
