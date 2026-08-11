@@ -1566,3 +1566,104 @@
         min-height: 420px;
     }
 }
+
+/* Mobile Responsive Optimization Fixes */
+@media (max-width: 768px) {
+    /* 1. Floating WhatsApp Button - Compact mobile positioning */
+    .floating_btn {
+        bottom: 16px;
+        right: 16px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .contact_icon {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+    }
+
+    .text_icon {
+        display: none !important;
+    }
+
+    /* 2. Process Steps Flow on Mobile */
+    .process-card-box {
+        padding: 20px 18px;
+    }
+
+    .process-card-box .d-flex {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 16px 8px !important;
+    }
+
+    .process-step-item {
+        flex: 1 1 42% !important;
+        min-width: 125px;
+    }
+
+    .process-connector {
+        display: none !important;
+    }
+
+    /* 3. Tech Mini Grid on Mobile */
+    .tech-mini-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    /* 4. CTA Banners Stacking */
+    .blue-cta-banner,
+    .contact-cta-soft-banner,
+    .cta-project-box {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        padding: 20px 22px !important;
+        gap: 16px !important;
+    }
+
+    .blue-cta-banner .btn,
+    .contact-cta-soft-banner .btn,
+    .cta-project-box .btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 576px) {
+    /* 5. Skills Grid Card Wrap for Long Skill Titles */
+    .skill-card {
+        padding: 16px 18px !important;
+    }
+
+    .skill-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+
+    .skill-title-wrap {
+        width: 100%;
+    }
+
+    .skill-title-wrap span {
+        white-space: normal !important;
+        overflow: visible !important;
+        word-break: break-word;
+        font-size: 15px !important;
+    }
+
+    .skill-stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* 6. Tech Mini Grid small screen fallback */
+    .tech-mini-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+    }
+}
+
