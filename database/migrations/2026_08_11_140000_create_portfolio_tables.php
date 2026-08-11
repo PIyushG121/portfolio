@@ -64,6 +64,15 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('certifications', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('issuer');
+            $table->date('issued_at')->nullable();
+            $table->unsignedInteger('sort_order')->default(0);
+            $table->timestamps();
+        });
+
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -88,6 +97,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('contact_messages');
         Schema::dropIfExists('testimonials');
+        Schema::dropIfExists('certifications');
         Schema::dropIfExists('services');
         Schema::dropIfExists('projects');
         Schema::dropIfExists('experiences');

@@ -10,8 +10,8 @@
 </div>
 
 <div class="card border-0 shadow-sm">
-    <div class="table-responsive">
-        <table class="table align-middle mb-0">
+    <div class="card-body">
+        <table id="projects-table" class="table table-striped table-hover align-middle mb-0">
             <thead>
                 <tr>
                     <th>Project</th>
@@ -50,3 +50,54 @@
     </div>
 </div>
 @endsection
+
+@push('styles')
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.bootstrap5.css">
+<style>
+    .dt-search {
+        margin-bottom: 1rem;
+    }
+
+    .dt-length {
+        margin-bottom: 1rem;
+    }
+
+    .dt-layout-row:last-child {
+        margin-top: 1rem;
+    }
+</style>
+@endpush
+
+@push('scripts')
+<script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.3.8/js/dataTables.bootstrap5.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const table = document.querySelector('#projects-table');
+
+        if (table) {
+            new DataTable('#projects-table', {
+                paging: true,
+                searching: true,
+                info: true,
+                lengthChange: true,
+                pageLength: 10,
+                order: [[3, 'asc']],
+                language: {
+                    search: 'Global search:',
+                    searchPlaceholder: 'Search projects, categories, descriptions...'
+                },
+                layout: {
+                    topStart: 'pageLength',
+                    topEnd: 'search',
+                    bottomStart: 'info',
+                    bottomEnd: 'paging'
+                },
+                columnDefs: [
+                    { orderable: false, searchable: false, targets: 4 }
+                ]
+            });
+        }
+    });
+</script>
+@endpush

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Certification;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Project;
@@ -20,6 +21,7 @@ class HomeController extends Controller
         return view('home', [
             'settings' => $settings,
             'skills' => Skill::query()->orderBy('sort_order')->get(),
+            'certifications' => Certification::query()->orderBy('sort_order')->get(),
             'educations' => Education::query()->orderBy('sort_order')->get(),
             'experiences' => Experience::query()->orderBy('sort_order')->get(),
             'projects' => Project::query()->orderByDesc('featured')->orderBy('sort_order')->get(),

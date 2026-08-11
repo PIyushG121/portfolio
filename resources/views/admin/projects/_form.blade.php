@@ -29,7 +29,10 @@
     </div>
     <div class="col-12">
         <label class="form-label">Long Description</label>
-        <textarea name="long_description" class="form-control" rows="5">{{ old('long_description', $project->long_description) }}</textarea>
+        <input type="hidden" name="long_description" id="long_description_input" value="{{ old('long_description', $project->long_description) }}">
+        <div class="project-editor">
+            <div id="long_description_editor" class="bg-white border rounded">{!! old('long_description', $project->long_description) !!}</div>
+        </div>
         @error('long_description')
             <div class="text-danger small mt-1">{{ $message }}</div>
         @enderror

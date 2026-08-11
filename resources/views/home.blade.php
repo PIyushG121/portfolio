@@ -1,21 +1,278 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+    $primaryEducation = $educations->first();
+    $aboutHighlights = [
+        ['icon' => 'bi bi-patch-check', 'label' => 'Problem Solver'],
+        ['icon' => 'bi bi-code-square', 'label' => 'Clean Code Advocate'],
+        ['icon' => 'bi bi-stars', 'label' => 'Quick Learner'],
+        ['icon' => 'bi bi-people', 'label' => 'Team Player'],
+    ];
+    $whatIDo = [
+        ['icon' => 'bi bi-window', 'title' => 'Web Development', 'text' => 'Building responsive and performant web applications.'],
+        ['icon' => 'bi bi-hdd-network', 'title' => 'Backend Development', 'text' => 'Creating secure RESTful APIs and scalable backend systems.'],
+        ['icon' => 'bi bi-cpu', 'title' => 'AI & Automation', 'text' => 'Integrating AI solutions and automation to solve real-world problems.'],
+        ['icon' => 'bi bi-database', 'title' => 'Database Management', 'text' => 'Designing efficient database schemas and optimizing queries.'],
+    ];
+    $techStack = [
+        ['icon' => 'bi bi-filetype-jsx', 'label' => 'React.js'],
+        ['icon' => 'bi bi-layers', 'label' => 'Next.js'],
+        ['icon' => 'bi bi-braces', 'label' => 'Laravel'],
+        ['icon' => 'bi bi-boxes', 'label' => 'Node.js'],
+        ['icon' => 'bi bi-database', 'label' => 'MySQL'],
+        ['icon' => 'bi bi-server', 'label' => 'MongoDB'],
+        ['icon' => 'bi bi-wind', 'label' => 'Tailwind CSS'],
+        ['icon' => 'bi bi-github', 'label' => 'Git & GitHub'],
+    ];
+@endphp
+
+<style>
+    .about-modern {
+        background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+    }
+
+    .about-modern .section-title {
+        padding-bottom: 24px;
+    }
+
+    .about-hero-card,
+    .about-info-card,
+    .about-services-card,
+    .about-tech-card {
+        background: #fff;
+        border: 1px solid #e8eef7;
+        border-radius: 22px;
+        box-shadow: 0 12px 35px rgba(15, 41, 77, 0.08);
+    }
+
+    .about-copy {
+        padding: 22px 0 0;
+    }
+
+    .about-copy p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #475467;
+        margin-bottom: 26px;
+    }
+
+    .about-highlight-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .about-highlight {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        border: 1px solid #e5edf8;
+        border-radius: 14px;
+        background: #fff;
+        color: #344054;
+        font-weight: 500;
+        box-shadow: 0 8px 20px rgba(15, 41, 77, 0.04);
+    }
+
+    .about-highlight i,
+    .about-detail-icon,
+    .about-service-icon,
+    .tech-pill i {
+        color: #2d72ff;
+    }
+
+    .about-hero-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 100%;
+        background: linear-gradient(145deg, #edf5ff 0%, #dceaff 100%);
+    }
+
+    .about-hero-card::before,
+    .about-hero-card::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .about-hero-card::before {
+        width: 220px;
+        height: 220px;
+        top: -70px;
+        right: -70px;
+    }
+
+    .about-hero-card::after {
+        width: 160px;
+        height: 160px;
+        bottom: -40px;
+        left: -40px;
+    }
+
+    .about-hero-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: relative;
+        z-index: 2;
+    }
+
+    .experience-badge {
+        position: absolute;
+        left: 26px;
+        bottom: 26px;
+        z-index: 3;
+        background: rgba(255, 255, 255, 0.94);
+        padding: 16px 18px;
+        border-radius: 18px;
+        box-shadow: 0 16px 30px rgba(39, 89, 168, 0.18);
+        min-width: 120px;
+    }
+
+    .experience-badge strong {
+        display: block;
+        font-size: 40px;
+        line-height: 1;
+        color: #2d72ff;
+        margin-bottom: 8px;
+    }
+
+    .experience-badge span {
+        display: block;
+        color: #344054;
+        font-weight: 500;
+    }
+
+    .about-info-card,
+    .about-services-card,
+    .about-tech-card {
+        padding: 24px 28px;
+    }
+
+    .about-card-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 24px;
+    }
+
+    .about-card-title i {
+        color: #2d72ff;
+        font-size: 24px;
+    }
+
+    .about-detail-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 28px;
+    }
+
+    .about-detail-item {
+        display: flex;
+        gap: 14px;
+        padding: 16px 0;
+        border-bottom: 1px solid #eef3f8;
+    }
+
+    .about-detail-item:nth-last-child(-n+2) {
+        border-bottom: 0;
+    }
+
+    .about-detail-icon,
+    .about-service-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: #eef4ff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
+    }
+
+    .about-detail-item h5,
+    .about-service-item h5 {
+        font-size: 21px;
+        margin-bottom: 6px;
+    }
+
+    .about-detail-item p,
+    .about-service-item p {
+        margin: 0;
+        color: #475467;
+        line-height: 1.65;
+    }
+
+    .about-service-item {
+        display: flex;
+        gap: 14px;
+        padding: 16px 0;
+    }
+
+    .about-service-item + .about-service-item {
+        border-top: 1px solid #eef3f8;
+    }
+
+    .tech-pill-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .tech-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border: 1px solid #e5edf8;
+        border-radius: 14px;
+        background: #fff;
+        color: #344054;
+        font-weight: 500;
+        box-shadow: 0 8px 20px rgba(15, 41, 77, 0.04);
+    }
+
+    @media (max-width: 991.98px) {
+        .about-highlight-list,
+        .about-detail-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .about-detail-item:nth-last-child(-n+2) {
+            border-bottom: 1px solid #eef3f8;
+        }
+
+        .about-detail-item:last-child {
+            border-bottom: 0;
+        }
+
+        .about-hero-card {
+            min-height: 420px;
+        }
+    }
+</style>
+
 <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
     <div class="profile-img">
-        <img src="{{ asset($settings['profile_image'] ?? 'assets/img/my-profile-img.jpg') }}" alt="Profile" class="img-fluid rounded-circle">
+        <img src="{{ asset($settings['profile_photo'] ?? 'assets/img/my-profile-img.jpeg') }}" alt="Profile" class="img-fluid rounded-circle">
     </div>
 
     <a href="{{ route('home') }}" class="logo d-flex align-items-center justify-content-center">
-        <h1 class="sitename">{{ $settings['hero_name'] ?? 'Portfolio' }}</h1>
+        <h1 class="sitename">{{ $settings['name'] ?? 'Portfolio' }}</h1>
     </a>
 
     <div class="social-links text-center">
-        <a href="{{ $settings['twitter_url'] ?? '#' }}" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="{{ $settings['github_url'] ?? '#' }}" class="facebook"><i class="bi bi-github"></i></a>
-        <a href="{{ $settings['linkedin_url'] ?? '#' }}" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="{{ $settings['github'] ?? '#' }}" class="facebook" target="_blank" rel="noreferrer"><i class="bi bi-github"></i></a>
+        <a href="{{ $settings['linkedin'] ?? '#' }}" class="linkedin" target="_blank" rel="noreferrer"><i class="bi bi-linkedin"></i></a>
     </div>
 
     <nav id="navmenu" class="navmenu">
@@ -33,41 +290,147 @@
 
 <main class="main">
     <section id="hero" class="hero section dark-background">
-        <img src="{{ asset($settings['hero_image'] ?? 'assets/img/hero-bg.jpg') }}" alt="Hero background" data-aos="fade-in">
+        <img src="{{ asset($settings['hero_bg'] ?? 'assets/img/hero-bg.png') }}" alt="Hero background" data-aos="fade-in">
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <h2>{{ $settings['hero_name'] ?? 'Portfolio' }}</h2>
-            <p>I'm <span class="typed" data-typed-items="{{ $settings['hero_roles'] ?? 'Developer, Designer' }}"></span></p>
+            <h2>{{ $settings['name'] ?? 'Portfolio' }}</h2>
+            <p>I'm <span class="typed" data-typed-items="{{ $settings['tagline'] ?? 'Full Stack Developer' }}, Laravel Developer, AI Builder"></span></p>
         </div>
     </section>
 
-    <section id="about" class="about section">
+    <section id="about" class="about about-modern section">
         <div class="container section-title" data-aos="fade-up">
-            <h2>About</h2>
-            <p>{{ $settings['about_description'] ?? '' }}</p>
+            <h2>About Me</h2>
         </div>
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row gy-4 justify-content-center">
-                <div class="col-lg-4">
-                    <img src="{{ asset($settings['about_image'] ?? 'assets/img/my-profile-img.jpg') }}" class="img-fluid" alt="About image">
-                </div>
-                <div class="col-lg-8 content">
-                    <h2>{{ $settings['about_title'] ?? '' }}</h2>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>{{ $settings['email'] ?? '' }}</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>{{ $settings['phone'] ?? '' }}</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Location:</strong> <span>{{ $settings['location'] ?? '' }}</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Projects:</strong> <span>{{ $projects->count() }}</span></li>
-                            </ul>
+            <div class="row gy-4 align-items-stretch mb-4">
+                <div class="col-lg-7">
+                    <div class="about-copy pe-lg-4">
+                        <p>{{ $settings['bio'] ?? '' }}</p>
+
+                        <div class="about-highlight-list">
+                            @foreach ($aboutHighlights as $highlight)
+                                <div class="about-highlight">
+                                    <i class="{{ $highlight['icon'] }}"></i>
+                                    <span>{{ $highlight['label'] }}</span>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="about-hero-card">
+                        <img src="{{ asset('assets/img/about.png') }}" alt="About Piyush Gupta">
+                        <div class="experience-badge">
+                            <strong>2+</strong>
+                            <span>Years of Experience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row gy-4 mb-4">
+                <div class="col-lg-7">
+                    <div class="about-info-card h-100">
+                        <div class="about-card-title">
+                            <i class="bi bi-person-vcard"></i>
+                            <span>Personal Information</span>
+                        </div>
+
+                        <div class="about-detail-grid">
+                            <div class="about-detail-item">
+                                <div class="about-detail-icon"><i class="bi bi-mortarboard"></i></div>
+                                <div>
+                                    <h5>Degree</h5>
+                                    <p>{{ $settings['degree'] ?? '' }}</p>
+                                </div>
+                            </div>
+                            <div class="about-detail-item">
+                                <div class="about-detail-icon"><i class="bi bi-envelope"></i></div>
+                                <div>
+                                    <h5>Email</h5>
+                                    <p>{{ $settings['email'] ?? '' }}</p>
+                                </div>
+                            </div>
+                            <div class="about-detail-item">
+                                <div class="about-detail-icon"><i class="bi bi-building"></i></div>
+                                <div>
+                                    <h5>University</h5>
+                                    <p>{{ $primaryEducation?->institution ?? 'Shri Ramswaroop Memorial College of Engineering and Management' }}</p>
+                                </div>
+                            </div>
+                            <div class="about-detail-item">
+                                <div class="about-detail-icon"><i class="bi bi-telephone"></i></div>
+                                <div>
+                                    <h5>Phone</h5>
+                                    <p>{{ $settings['phone'] ?? '' }}</p>
+                                </div>
+                            </div>
+                            <div class="about-detail-item">
+                                <div class="about-detail-icon"><i class="bi bi-geo-alt"></i></div>
+                                <div>
+                                    <h5>Location</h5>
+                                    <p>{{ $settings['city'] ?? '' }}</p>
+                                </div>
+                            </div>
+                            <div class="about-detail-item">
+                                <div class="about-detail-icon"><i class="bi bi-briefcase"></i></div>
+                                <div>
+                                    <h5>Freelance</h5>
+                                    <p>Available for opportunities</p>
+                                </div>
+                            </div>
+                            <div class="about-detail-item">
+                                <div class="about-detail-icon"><i class="bi bi-globe"></i></div>
+                                <div>
+                                    <h5>Languages</h5>
+                                    <p>English, Hindi</p>
+                                </div>
+                            </div>
+                            <div class="about-detail-item">
+                                <div class="about-detail-icon"><i class="bi bi-kanban"></i></div>
+                                <div>
+                                    <h5>Projects</h5>
+                                    <p>{{ $settings['stat_projects_shipped'] ?? $projects->count() }} Projects Shipped</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="about-services-card h-100">
+                        <div class="about-card-title">
+                            <i class="bi bi-folder2-open"></i>
+                            <span>What I Do</span>
+                        </div>
+
+                        @foreach ($whatIDo as $item)
+                            <div class="about-service-item">
+                                <div class="about-service-icon"><i class="{{ $item['icon'] }}"></i></div>
+                                <div>
+                                    <h5>{{ $item['title'] }}</h5>
+                                    <p>{{ $item['text'] }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-tech-card">
+                <div class="about-card-title mb-3">
+                    <i class="bi bi-code-slash"></i>
+                    <span>Technologies I Work With</span>
+                </div>
+
+                <div class="tech-pill-grid">
+                    @foreach ($techStack as $tech)
+                        <div class="tech-pill">
+                            <i class="{{ $tech['icon'] }}"></i>
+                            <span>{{ $tech['label'] }}</span>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -123,7 +486,13 @@
                             <h4>{{ $experience->title }}</h4>
                             <h5>{{ $experience->years }}</h5>
                             <p><em>{{ $experience->company }}</em></p>
-                            <p>{{ $experience->description }}</p>
+                            <ul>
+                                @foreach (preg_split('/\r\n|\r|\n/', (string) $experience->description) as $line)
+                                    @if (trim($line) !== '')
+                                        <li>{{ $line }}</li>
+                                    @endif
+                                @endforeach
+                            </ul>
                         </div>
                     @endforeach
                 </div>
@@ -131,10 +500,33 @@
         </div>
     </section>
 
+    <section id="certifications" class="services section">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Certifications & Achievements</h2>
+            <p>Highlights that strengthen the portfolio beyond project screenshots.</p>
+        </div>
+
+        <div class="container">
+            <div class="row gy-4">
+                @foreach ($certifications as $certification)
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <div class="service-item position-relative h-100">
+                            <div class="icon">
+                                <i class="bi bi-patch-check"></i>
+                            </div>
+                            <h3>{{ $certification->title }}</h3>
+                            <p>{{ $certification->issuer }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     <section id="portfolio" class="portfolio section light-background">
         <div class="container section-title" data-aos="fade-up">
             <h2>Portfolio</h2>
-            <p>Projects are managed from the admin panel and rendered here dynamically.</p>
+            <p>Projects mapped from your updated plan and ready to be managed from the admin panel.</p>
         </div>
 
         <div class="container">
@@ -189,36 +581,6 @@
         </div>
     </section>
 
-    <section id="testimonials" class="testimonials section light-background">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Testimonials</h2>
-        </div>
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-                    {"loop":true,"speed":600,"autoplay":{"delay":5000},"slidesPerView":"auto","pagination":{"el":".swiper-pagination","type":"bullets","clickable":true}}
-                </script>
-                <div class="swiper-wrapper">
-                    @foreach ($testimonials as $testimonial)
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <p>
-                                    <i class="bi bi-quote quote-icon-left"></i>
-                                    <span>{{ $testimonial->quote }}</span>
-                                    <i class="bi bi-quote quote-icon-right"></i>
-                                </p>
-                                <h3>{{ $testimonial->name }}</h3>
-                                <h4>{{ $testimonial->role }}</h4>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
     <section id="contact" class="contact section">
         <div class="container section-title" data-aos="fade-up">
             <h2>Contact</h2>
@@ -233,7 +595,7 @@
                             <i class="bi bi-geo-alt flex-shrink-0"></i>
                             <div>
                                 <h3>Location</h3>
-                                <p>{{ $settings['location'] ?? '' }}</p>
+                                <p>{{ $settings['city'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="info-item d-flex">

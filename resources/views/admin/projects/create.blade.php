@@ -17,5 +17,63 @@
             </div>
         </form>
     </div>
-    </div>
+</div>
 @endsection
+
+@push('styles')
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+<style>
+    .project-editor {
+        margin-bottom: 1rem;
+    }
+
+    .project-editor .ql-toolbar.ql-snow {
+        border-top-left-radius: 0.375rem;
+        border-top-right-radius: 0.375rem;
+    }
+
+    .project-editor .ql-container.ql-snow {
+        height: 220px;
+        max-height: 220px;
+        overflow-y: auto;
+        border-bottom-left-radius: 0.375rem;
+        border-bottom-right-radius: 0.375rem;
+        background: #fff;
+    }
+
+    .project-editor .ql-editor {
+        min-height: 220px;
+    }
+</style>
+@endpush
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const editorElement = document.getElementById('long_description_editor');
+        const inputElement = document.getElementById('long_description_input');
+
+        if (!editorElement || !inputElement) {
+            return;
+        }
+
+        const quill = new Quill('#long_description_editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ header: [2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ list: 'ordered' }, { list: 'bullet' }],
+                    ['link', 'blockquote', 'code-block'],
+                    ['clean']
+                ]
+            }
+        });
+
+        editorElement.closest('form').addEventListener('submit', function () {
+            inputElement.value = quill.root.innerHTML === '<p><br></p>' ? '' : quill.root.innerHTML;
+        });
+    });
+</script>
+@endpush
