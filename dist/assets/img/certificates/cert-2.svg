@@ -1,0 +1,15 @@
+<svg width="600" height="420" viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="420" fill="#FFFFFF" rx="12"/>
+  <rect x="12" y="12" width="576" height="396" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2" rx="8"/>
+  <rect x="24" y="24" width="6" height="372" fill="#0D9488"/>
+  <text x="48" y="60" font-family="system-ui, sans-serif" font-weight="700" font-size="18" fill="#0D9488">LearnTrail</text>
+  <text x="48" y="110" font-family="serif" font-weight="700" font-size="28" fill="#0F172A">Certificate of Completion</text>
+  <text x="48" y="145" font-family="system-ui, sans-serif" font-size="14" fill="#64748B">PROUDLY PRESENTED TO</text>
+  <text x="48" y="190" font-family="system-ui, sans-serif" font-weight="700" font-size="26" fill="#0D9488">Piyush Gupta</text>
+  <text x="48" y="230" font-family="system-ui, sans-serif" font-size="15" fill="#334155">for completing intensive training in</text>
+  <text x="48" y="260" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#0F172A">AI &amp; Machine Learning Bootcamp</text>
+  <line x1="48" y1="340" x2="200" y2="340" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="48" y="360" font-family="system-ui, sans-serif" font-size="12" fill="#64748B">Program Director</text>
+  <circle cx="500" cy="320" r="35" fill="#CCFBF1" stroke="#0D9488" stroke-width="2"/>
+  <path d="M490 320l6 6 12-12" stroke="#0D9488" stroke-width="3" stroke-linecap="round"/>
+</svg>

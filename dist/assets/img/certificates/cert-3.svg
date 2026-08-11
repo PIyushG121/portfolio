@@ -1,0 +1,15 @@
+<svg width="600" height="420" viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="420" fill="#FFFFFF" rx="12"/>
+  <rect x="12" y="12" width="576" height="396" fill="#FFFBEB" stroke="#FDE68A" stroke-width="2" rx="8"/>
+  <rect x="24" y="24" width="6" height="372" fill="#D97706"/>
+  <text x="48" y="60" font-family="system-ui, sans-serif" font-weight="700" font-size="18" fill="#D97706">College / Internal Award</text>
+  <text x="48" y="110" font-family="serif" font-weight="700" font-size="28" fill="#0F172A">Certificate of Achievement</text>
+  <text x="48" y="145" font-family="system-ui, sans-serif" font-size="14" fill="#78350F">AWARDED TO</text>
+  <text x="48" y="190" font-family="system-ui, sans-serif" font-weight="700" font-size="26" fill="#D97706">Piyush Gupta</text>
+  <text x="48" y="230" font-family="system-ui, sans-serif" font-size="15" fill="#451A03">for winning the top distinction for</text>
+  <text x="48" y="260" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#0F172A">Best Project Award - Walletry</text>
+  <line x1="48" y1="340" x2="200" y2="340" stroke="#FCD34D" stroke-width="1.5"/>
+  <text x="48" y="360" font-family="system-ui, sans-serif" font-size="12" fill="#78350F">Head of Department</text>
+  <circle cx="500" cy="320" r="35" fill="#FEF3C7" stroke="#D97706" stroke-width="2"/>
+  <path d="M490 320l6 6 12-12" stroke="#D97706" stroke-width="3" stroke-linecap="round"/>
+</svg>
