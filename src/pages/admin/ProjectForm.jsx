@@ -79,11 +79,31 @@ export default function ProjectForm() {
       }
     };
 
-    const timer = setTimeout(initCKEditor, 100);
+    const loadScriptAndInit = () => {
+      if (window.ClassicEditor) {
+        initCKEditor();
+      } else {
+        const existingScript = document.getElementById('ckeditor-script');
+        if (!existingScript) {
+          const script = document.createElement('script');
+          script.id = 'ckeditor-script';
+          script.src = 'https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js';
+          script.onload = () => {
+            if (active) initCKEditor();
+          };
+          document.body.appendChild(script);
+        } else {
+          existingScript.addEventListener('load', () => {
+            if (active) initCKEditor();
+          });
+        }
+      }
+    };
+
+    loadScriptAndInit();
 
     return () => {
       active = false;
-      clearTimeout(timer);
       if (editorInstanceRef.current) {
         editorInstanceRef.current.destroy().then(() => {
           editorInstanceRef.current = null;

@@ -1,164 +1,112 @@
-# changes.md — SEO Fixes for piyushguptaportfolio.online
+# changes2.md — Deeper SEO, Performance & Trust Signals
 
-Audited the live site + the repo (`index.html`, `public/robots.txt`, `src/App.jsx`, `src/components/Header.jsx`). Current stack: **React + Vite, client-rendered SPA**, single route `/` with in-page anchor sections (`#about`, `#skills`, `#resume`, `#portfolio`, `#services`, `#certifications`, `#contact`), plus client-only `/admin` routes.
+Builds on `changes.md`. That doc covered the fundamentals (title/description, OG tags, robots.txt, sitemap, structured data). This one covers what actually determines *ranking* and *credibility* once the fundamentals are in place — performance, correctness, and off-page signals.
 
-Here's what's actually missing, in priority order, with exact fixes.
-
----
-
-## 0. One honest caveat first (read before doing the rest)
-
-Your site is **client-side rendered** — the initial HTML Google/social crawlers see is just `<div id="root"></div>`, and all your actual content (About text, skills, project names) only appears after React runs. Googlebot *does* execute JS and will index it, but on a delay (can be days), and other crawlers (Bing, some social scrapers) may not execute JS at all.
-
-This doesn't block any of the fixes below — they all work fine on a CSR site — but it's the ceiling on how well you'll ever rank until you add prerendering. Flagging it now so it's not a mystery later; not fixing it in this pass since it's a bigger architectural change (see §7).
+**Before anything else:** I can't verify from here whether `changes.md` actually shipped correctly (my fetch tool only sees extracted metadata, not raw HTML). Paste me `view-source:https://www.piyushguptaportfolio.online/` output, or run these two checks yourself right now and tell me what you get:
+1. https://search.google.com/test/rich-results — paste your URL, confirms OG tags + JSON-LD are actually parsing
+2. https://www.opengraph.xyz/ — paste your URL, shows exactly what a shared link preview will look like
 
 ---
 
-## 1. Proper `<title>` / meta description (currently generic)
+## 1. www vs non-www — duplicate content risk (check this today)
 
-**Current** (`index.html`):
-```html
-<title>Piyush Gupta Portfolio</title>
-<meta content="Full Stack Developer portfolio for Piyush Gupta." name="description">
-```
+Your `og:url` and canonical are set to `https://www.piyushguptaportfolio.online/`. Test **right now**: does `https://piyushguptaportfolio.online/` (no `www`) also load, or does it 301-redirect to the `www` version?
 
-**Replace with** (keyword-relevant, under Google's ~60 char title / ~155 char description limits):
-```html
-<title>Piyush Gupta | Full Stack Developer — React, Next.js, Laravel</title>
-<meta name="description" content="Piyush Gupta is a Full Stack Developer building AI-powered web apps with React, Next.js, Laravel & Node.js. View projects, skills, and resume.">
-<link rel="canonical" href="https://www.piyushguptaportfolio.online/">
-```
-
-The canonical tag matters even for a single page — it tells crawlers which exact URL (`www` vs non-`www`, trailing slash or not) is the "real" one, preventing duplicate-content confusion if both `piyushguptaportfolio.online` and `www.piyushguptaportfolio.online` resolve.
+If both load as separate 200-status pages, Google sees two duplicate copies of your site and splits ranking signal between them. On Vercel: **Project → Settings → Domains** — set one as primary and confirm the other shows a redirect (Vercel usually does this automatically when you add both, but verify it isn't serving both as independent origins).
 
 ---
 
-## 2. Open Graph + Twitter Card tags (currently zero)
+## 2. Fix redundant/bloated `<head>` (real performance cost)
 
-These control how your link looks when shared on LinkedIn, WhatsApp, X/Twitter, Discord, etc. — since these crawlers don't run JS, static tags in `index.html` work perfectly for a CSR site.
+From your `index.html`, you're loading:
+- Google Fonts: `Roboto:wght@100;300;400;500;700;900` **and** `Poppins:wght@100;200;300;400;500;600;700;800;900` **and** `Raleway:wght@100;200;300;400;500;600;700;800;900` — that's 24 font weights across 3 families. You are not using all of these. Every unused weight is dead render-blocking weight on load.
+- **Two icon libraries**: `bootstrap-icons` AND Font Awesome 4.5.0 from `maxcdn.bootstrapcdn.com` — Font Awesome 4.5.0 is a genuinely ancient version (2015-era). Pick one icon library, drop the other entirely.
+- `ckeditor.js` (full CKEditor5 bundle, ~1MB+) loaded on **every page load**, including for anonymous visitors who will never see the admin panel. This should only load inside the admin bundle, not globally in `index.html`.
 
-Add inside `<head>`:
-```html
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.piyushguptaportfolio.online/">
-<meta property="og:title" content="Piyush Gupta | Full Stack Developer">
-<meta property="og:description" content="Full Stack Developer building AI-powered web apps with React, Next.js, Laravel & Node.js.">
-<meta property="og:image" content="https://www.piyushguptaportfolio.online/assets/img/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+**Action:**
+1. Open Chrome DevTools → Network tab on the live site, filter by font/JS, note actual transferred size before touching anything (baseline).
+2. Check which font weights are actually used in `home-styles.css` (`font-weight:` values) — trim the Google Fonts URL to only those.
+3. Pick bootstrap-icons OR Font Awesome, remove the other `<link>`/CDN script.
+4. Move the CKEditor script import into the admin route's own code (dynamic `import()` inside `ProjectForm.jsx`, not a global `<script>` tag) — Vite will code-split it automatically so it only downloads when someone actually visits `/admin`.
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Piyush Gupta | Full Stack Developer">
-<meta name="twitter:description" content="Full Stack Developer building AI-powered web apps with React, Next.js, Laravel & Node.js.">
-<meta name="twitter:image" content="https://www.piyushguptaportfolio.online/assets/img/og-image.png">
-```
-
-**Action needed from you:** you don't have an `og-image.png` yet. Create one — 1200×630px, your name + title + maybe your photo, saved to `public/assets/img/og-image.png`. This is the single highest-leverage missing asset for "showing up well" when people share your link.
+This is the single biggest lever on your **Lighthouse Performance score**, which is itself a ranking factor (Core Web Vitals).
 
 ---
 
-## 3. `robots.txt` (exists, but incomplete)
+## 3. Core Web Vitals — concrete targets
 
-**Current** (`public/robots.txt`):
-```
-User-agent: *
-Disallow:
-```
+Run https://pagespeed.web.dev/ against your live URL (mobile *and* desktop, they're scored separately). Target:
 
-**Replace with:**
-```
-User-agent: *
-Disallow: /admin
-Disallow: /login
-Allow: /
+| Metric | Good | What affects it here |
+|---|---|---|
+| LCP (Largest Contentful Paint) | < 2.5s | Your hero image/text — is the hero background image optimized (WebP, correctly sized, not a huge PNG)? |
+| CLS (Cumulative Layout Shift) | < 0.1 | Images without explicit width/height, web fonts swapping in and shifting layout |
+| INP (Interaction to Next Paint) | < 200ms | JS bundle size — the CKEditor/duplicate-fonts issue in §2 directly hurts this |
 
-Sitemap: https://www.piyushguptaportfolio.online/sitemap.xml
-```
-
-Two fixes here: (1) it now points crawlers to your sitemap, (2) it keeps your `/admin` and `/login` routes out of search results — right now Google could technically index your login page, which you don't want.
+Paste me the actual PageSpeed report numbers once you run it and I'll tell you exactly which fix in this doc addresses which metric.
 
 ---
 
-## 4. `sitemap.xml` (missing entirely)
+## 4. Image optimization
 
-Since this is genuinely a single-page site, the sitemap only needs one URL — but having it still matters, because it's what you submit to Google Search Console to trigger indexing, and it carries `lastmod` so Google knows to recrawl after you update projects.
-
-Create `public/sitemap.xml`:
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.piyushguptaportfolio.online/</loc>
-    <lastmod>2026-08-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-</urlset>
-```
-Update `<lastmod>` whenever you meaningfully update the site content.
-
-**Then:** submit both the sitemap and the homepage URL in **Google Search Console** (add the domain property, verify via DNS TXT record since you own the domain, submit `sitemap.xml`). This is the actual mechanism that gets you indexed — none of the file changes above do anything until Google knows to look.
+- Convert hero/profile/project images to **WebP** (or AVIF if you want to go further) — 25-50% smaller than PNG/JPEG at equal visual quality.
+- Add explicit `width` and `height` attributes (or CSS `aspect-ratio`) on every `<img>` — prevents CLS from images loading in and shifting text around.
+- Add `loading="lazy"` to every image below the hero fold (About photo can stay eager since it's near the top; Portfolio project thumbnails should be lazy).
+- Add real, descriptive `alt` text — not `alt="project"` but `alt="Walletry — AI finance dashboard showing expense analytics"`. This is both an accessibility requirement and a genuine image-search ranking signal.
 
 ---
 
-## 5. Structured data (JSON-LD) — does the job breadcrumbs would, for a single page
+## 5. Accessibility & semantic HTML (dual-purpose: a11y + SEO)
 
-True breadcrumb navigation (`Home > Projects > X`) doesn't apply to a one-page site with anchor sections — there's nothing hierarchical to show. What actually helps a personal portfolio show up well in search is **`Person` schema**, which can make Google show a knowledge-panel-style rich result (name, job title, links to your GitHub/LinkedIn) instead of a plain blue link.
+Search engines use HTML structure as a ranking signal, and screen readers use it for usability — same fixes serve both:
 
-Add before `</head>` in `index.html`:
-```html
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Piyush Gupta",
-  "jobTitle": "Full Stack Developer",
-  "url": "https://www.piyushguptaportfolio.online/",
-  "sameAs": [
-    "https://github.com/piyush-gupta2003",
-    "https://linkedin.com/in/piyushgupta2003"
-  ],
-  "knowsAbout": ["React.js", "Next.js", "Laravel", "Node.js", "AI/ML", "TypeScript"]
-}
-</script>
-```
-Fix the `sameAs` URLs to your actual profile links before adding. Test it afterward with Google's [Rich Results Test](https://search.google.com/test/rich-results) against your live URL.
+- **One `<h1>` per page** — should be your name/headline in Hero, not the site `<title>`. Check `Hero.jsx` uses an actual `<h1>`, not a styled `<div>` or `<span>`.
+- Section headings should follow logical order: `h1` (hero) → `h2` per section (About, Skills, Resume, Portfolio, Services, Certifications, Contact) → `h3` for sub-items (individual project titles, individual skill names) — no skipping levels.
+- Nav should be a real `<nav>` element with `aria-label="Main navigation"`, links should have visible focus states (test by tabbing through the site with keyboard only, no mouse).
+- The mobile hamburger menu button needs `aria-expanded` and `aria-label="Toggle menu"` — check `Header.jsx`'s `mobileHeaderOpen` toggle button.
+- Color contrast — run the site through https://webaim.org/resourceevaluate/ or Chrome DevTools' built-in contrast checker; text-on-background pairs need at least 4.5:1 ratio for body text.
 
 ---
 
-## 6. Mobile optimization — checklist (can't fully verify without running Lighthouse against the live site)
+## 6. The `/admin` and `/login` routes are client-side-only "protection" — real SEO/security concern
 
-Viewport meta tag is already correctly set. Beyond that, run **Chrome DevTools → Lighthouse → Mobile** on the live URL and check for:
-
-- [ ] Tap targets (nav links, buttons) at least 48×48px apart — check `Header.jsx` mobile menu specifically
-- [ ] Images have explicit `width`/`height` (or `aspect-ratio` in CSS) to prevent layout shift (CLS) — check `Portfolio.jsx`, `About.jsx` image tags
-- [ ] Images are lazy-loaded below the fold: `loading="lazy"` on `<img>` tags outside the hero
-- [ ] No horizontal scroll at 375px width (iPhone SE width — the strictest common test size)
-- [ ] Font sizes readable without zoom (16px minimum body text)
-- [ ] `theme-color` meta tag for mobile browser chrome color, add to `<head>`:
-  ```html
-  <meta name="theme-color" content="#111113">
-  ```
-
-Run Lighthouse first, then come back and I'll help fix whatever specific issues it flags.
+Looking at `App.jsx`: `/admin` is a React Router route, protected by a client-side `ProtectedRoute` check reading `AuthContext`. This means:
+- The actual HTML/JS for the admin panel **still downloads to anyone who visits `/admin`**, auth or not — it's just hidden by a client-side redirect. This is a minor security concern (not SEO), but worth knowing: real protection needs to happen server-side (your backend API rejecting unauthenticated requests), not just client-side routing.
+- For SEO specifically: `robots.txt` disallowing `/admin` and `/login` (from `changes.md`) stops *compliant* crawlers from indexing it, but doesn't stop it from being *fetched*. Add a `noindex` fallback too — since these are React Router client routes, the static `index.html` head can't conditionally change per-route without JS. A pragmatic fix: don't worry about this further for now, `robots.txt` + no external links pointing to `/admin` is sufficient for search visibility purposes; just don't treat `robots.txt` as an actual security boundary for the login page itself.
 
 ---
 
-## 7. Bigger fix, do later, not now: prerendering
+## 7. Off-page signals (nothing you fix in code — but matters as much as anything above)
 
-To actually close the CSR gap in §0, the standard fix without rewriting your React app is **`vite-plugin-prerender`** or migrating the build to prerender the `/` route at build time — this bakes real HTML (not just `<div id="root">`) into the deployed `dist/index.html`, so every crawler (not just JS-capable ones) sees your actual content immediately. Worth doing once the site's content is stable; not urgent for a portfolio at this stage.
+Google's ranking of a personal portfolio for your name leans heavily on **entity consistency** across the web, not just on-page SEO:
+
+- [ ] GitHub profile → bio/website field points to `piyushguptaportfolio.online`
+- [ ] LinkedIn profile → "Featured" section or contact info links to the portfolio
+- [ ] Resume PDF (the one you shared with me) → add the portfolio URL to the header, next to your email/phone
+- [ ] Any dev-community profiles (LeetCode, Codeforces, Dev.to, etc. if you have them) → link back to the portfolio
+- [ ] Once live and stable, submit to a couple of portfolio directories/showcases (e.g. relevant "developer portfolio" listing sites) — real backlinks, even a few, meaningfully help a brand-new domain
+
+This is genuinely how "showing up" for your name starts happening — Search Console indexing gets you *found*, but consistent cross-linking is what tells Google this is a real, established identity worth ranking.
 
 ---
 
-## Summary — do these in order
+## 8. Search Console — go beyond just submitting the sitemap
 
-1. Fix title/description/canonical in `index.html` (5 min)
-2. Add OG + Twitter tags to `index.html`, create `og-image.png` (15 min — image is the only real work)
-3. Fix `robots.txt` (2 min)
-4. Add `sitemap.xml` (2 min)
-5. Add Person JSON-LD schema, fix your real profile URLs in it (5 min)
-6. Submit site + sitemap to Google Search Console (10 min, but this is what actually triggers indexing)
-7. Run Lighthouse mobile audit, report back specific issues
-8. (Later) prerendering, once content is stable
+Once verified in Google Search Console:
+- Use **URL Inspection** on your homepage, click "Request Indexing" manually — don't just wait for the crawl.
+- Check the **Core Web Vitals report** and **Mobile Usability report** weekly for the first month — these surface real issues Google sees that PageSpeed Insights alone might not catch across page loads.
+- Set up **Bing Webmaster Tools** too (https://www.bing.com/webmasters) — it's a 5-minute add, and Bing/Copilot search increasingly matters, not just Google.
+
+---
+
+## Priority order for this pass
+
+1. **§1 www/non-www redirect check** — 5 min, fixes a real duplicate-content risk
+2. **§2 head bloat cleanup** (fonts, duplicate icon libs, CKEditor) — highest performance impact, moderate effort
+3. **§4 image optimization** (WebP, dimensions, lazy load, real alt text) — direct Core Web Vitals + accessibility win
+4. **§5 semantic HTML/heading hierarchy** — cheap, do while you're already touching components
+5. **§3 run PageSpeed Insights, report back numbers** — tells us if 2-4 actually worked
+6. **§7 off-page linking** — 20 min of profile edits, ongoing value
+7. **§8 Search Console deeper usage** — ongoing habit, not a one-time task
+
+Send me the PageSpeed numbers and the `view-source` output once you've done a pass, and I'll tell you exactly what's left.

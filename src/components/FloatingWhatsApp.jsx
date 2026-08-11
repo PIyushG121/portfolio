@@ -10,7 +10,7 @@ export default function FloatingWhatsApp() {
         href={settings.whatsapp}
       >
         <div className="contact_icon">
-          <i className="fa fa-whatsapp my-float"></i>
+          <i className="bi bi-whatsapp my-float"></i>
         </div>
       </a>
       <p className="text_icon">Talk to us?</p>

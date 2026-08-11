@@ -67,14 +67,19 @@ export default function Header() {
         className={`header-toggle d-xl-none bi ${
           mobileHeaderOpen ? 'bi-x' : 'bi-list'
         }`}
+        role="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded={mobileHeaderOpen}
         onClick={() => setMobileHeaderOpen(!mobileHeaderOpen)}
       ></i>
 
       <div className="profile-img text-center">
         <img
           src={settings.profile_photo}
-          alt="Profile"
+          alt={`Profile photo of ${settings.name}`}
           className="img-fluid"
+          width="120"
+          height="120"
         />
         <span
           className="online-status-dot"
@@ -90,7 +95,7 @@ export default function Header() {
         }}
         className="logo d-flex flex-column align-items-center justify-content-center"
       >
-        <h1 className="sitename">{settings.name}</h1>
+        <span className="sitename h5 text-white mb-0 fw-bold">{settings.name}</span>
         <span className="sidebar-role-tagline">{settings.tagline}</span>
       </a>
 
@@ -124,7 +129,7 @@ export default function Header() {
         </a>
       </div>
 
-      <nav id="navmenu" className="navmenu">
+      <nav id="navmenu" className="navmenu" aria-label="Main Navigation">
         <ul>
           {navItems.map((item) => (
             <li key={item.id}>

@@ -32,7 +32,7 @@ export default function Hero() {
       />
 
       <div className="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>{settings.name}</h2>
+        <h1>{settings.name}</h1>
         <p>
           I'm <span ref={typedElementRef} className="typed"></span>
         </p>
