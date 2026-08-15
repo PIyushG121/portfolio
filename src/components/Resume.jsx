@@ -5,24 +5,19 @@ import { experiences } from '../data/experience';
 export default function Resume() {
   return (
     <section id="resume" className="resume section">
-      <div className="container section-title" data-aos="fade-up">
-        <h2>Resume</h2>
-        <p>Experience and education displayed from structured data modules.</p>
-      </div>
-
-      <div className="container">
+      <div className="container" data-aos="fade-up">
         <div className="row g-4">
-          <div className="col-lg-6" data-aos="fade-up">
-            <div className="resume-timeline-col">
-              <div className="resume-header-badge">
-                <div className="header-icon">
-                  <i className="bi bi-mortarboard-fill"></i>
-                </div>
-                <h3>Education</h3>
+          {/* Education Column */}
+          <div className="col-lg-6">
+            <div className="section-card-box h-100">
+              <div className="about-card-title mb-4">
+                <i className="bi bi-mortarboard"></i>
+                <span>Education</span>
               </div>
-              {educations.map((edu, index) => (
-                <div key={index} className="resume-card-wrap">
-                  <div className="resume-card">
+
+              <div className="d-flex flex-column gap-3">
+                {educations.map((edu, index) => (
+                  <div key={index} className="resume-card">
                     <h4 className="resume-card-title">{edu.degree}</h4>
                     <div className="resume-meta-row">
                       <span className="resume-date-badge">
@@ -33,25 +28,25 @@ export default function Resume() {
                       </span>
                     </div>
                     {edu.description && (
-                      <p className="resume-description-text">{edu.description}</p>
+                      <span className="resume-description-text">{edu.description}</span>
                     )}
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div className="resume-timeline-col">
-              <div className="resume-header-badge">
-                <div className="header-icon">
-                  <i className="bi bi-briefcase-fill"></i>
-                </div>
-                <h3>Experience</h3>
+          {/* Experience Column */}
+          <div className="col-lg-6">
+            <div className="section-card-box h-100">
+              <div className="about-card-title mb-4">
+                <i className="bi bi-briefcase"></i>
+                <span>Experience</span>
               </div>
-              {experiences.map((exp, index) => (
-                <div key={index} className="resume-card-wrap">
-                  <div className="resume-card">
+
+              <div className="d-flex flex-column gap-3">
+                {experiences.map((exp, index) => (
+                  <div key={index} className="resume-card">
                     <h4 className="resume-card-title">{exp.title}</h4>
                     <div className="resume-meta-row">
                       <span className="resume-date-badge">
@@ -70,8 +65,8 @@ export default function Resume() {
                       ))}
                     </ul>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
