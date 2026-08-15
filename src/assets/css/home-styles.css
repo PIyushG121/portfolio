@@ -226,6 +226,59 @@
     line-height: 1.65;
 }
 
+.status-dot-pulse {
+    width: 9px;
+    height: 9px;
+    background-color: #12b76a;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.status-dot-pulse::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    border: 2px solid rgba(18, 183, 106, 0.6);
+    animation: status-pulse 2s infinite ease-out;
+}
+
+@keyframes status-pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2.3);
+        opacity: 0;
+    }
+}
+
+.exp-live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f0fdf4;
+    color: #027a48;
+    border: 1px solid #bbf7d0;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: monospace;
+    letter-spacing: 0.2px;
+    margin-top: 4px;
+}
+
+.exp-live-badge i {
+    color: #12b76a;
+}
+
 .about-service-item {
     display: flex;
     gap: 14px;

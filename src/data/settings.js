@@ -14,6 +14,9 @@ export const settings = {
   linkedin: 'https://linkedin.com/in/piyushgupta2003',
   profile_photo: 'assets/img/my-profile-img.jpeg',
   hero_bg: 'assets/img/hero-bg.png',
+  current_role: 'Full Stack Developer',
+  working_status: 'Available for Full-time & Projects',
+  career_start_date: '2026-01-01T00:00:00',
   stat_projects_shipped: '3+',
   stat_internship_months: '6',
   stat_certifications: '2+',
@@ -23,13 +26,14 @@ export const settings = {
 
 export const aboutHighlights = [
   { icon: 'bi bi-patch-check', label: 'Problem Solver' },
-  { icon: 'bi bi-code-square', label: 'Clean Code Advocate' },
+  { icon: 'bi bi-code-square', label: 'Vibe Coder' },
   { icon: 'bi bi-stars', label: 'Quick Learner' },
   { icon: 'bi bi-people', label: 'Team Player' },
 ];
 
 export const whatIDo = [
   { icon: 'bi bi-window', title: 'Web Development', text: 'Building responsive and performant web applications.' },
+  { icon: 'bi bi-phone', title: 'Mobile App Development', text: 'Developing cross-platform mobile applications and APKs using Flutter.' },
   { icon: 'bi bi-hdd-network', title: 'Backend Development', text: 'Creating secure RESTful APIs and scalable backend systems.' },
   { icon: 'bi bi-cpu', title: 'AI & Automation', text: 'Integrating AI solutions and automation to solve real-world problems.' },
   { icon: 'bi bi-database', title: 'Database Management', text: 'Designing efficient database schemas and optimizing queries.' },
