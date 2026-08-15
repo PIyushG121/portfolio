@@ -1,58 +1,140 @@
+export const skillCategories = [
+  { id: 'all', label: 'All Skills', icon: 'bi bi-grid-fill' },
+  { id: 'frontend', label: 'Frontend & Mobile', icon: 'bi bi-phone' },
+  { id: 'backend', label: 'Backend & APIs', icon: 'bi bi-hdd-network' },
+  { id: 'ai', label: 'AI & Automation', icon: 'bi bi-cpu' },
+  { id: 'database', label: 'Database & Tools', icon: 'bi bi-database' },
+];
+
 export const skills = [
   {
+    id: 'react-next',
     name: 'React.js / Next.js',
-    percent: 90,
-    sort_order: 1,
+    category: 'frontend',
     icon: 'assets/img/logo/react.svg',
-    level: 'Advanced'
+    badge: 'Core Stack',
+    badgeType: 'primary',
+    tagline: 'Interactive UI architectures, SSR web apps & performant component systems.',
+    tags: ['Next.js App Router', 'React Hooks', 'Tailwind CSS', 'State Management', 'Vite'],
+    level: 'Advanced',
+    color: '#0ea5e9',
+    iconBg: 'rgba(14, 165, 233, 0.12)'
   },
   {
-    name: 'Laravel',
-    percent: 85,
-    sort_order: 2,
+    id: 'laravel',
+    name: 'Laravel (PHP)',
+    category: 'backend',
     icon: 'assets/img/logo/laravel.svg',
-    level: 'Advanced'
+    badge: 'Production Tested',
+    badgeType: 'danger',
+    tagline: 'Enterprise backend systems, secure REST APIs & robust MVC architectures.',
+    tags: ['RESTful APIs', 'Eloquent ORM', 'Blade Engine', 'JWT / Auth', 'RBAC'],
+    level: 'Advanced',
+    color: '#ef4444',
+    iconBg: 'rgba(239, 68, 68, 0.12)'
   },
   {
-    name: 'JavaScript / TypeScript',
-    percent: 90,
-    sort_order: 3,
-    icon: 'assets/img/logo/javascript.svg',
-    level: 'Advanced'
-  },
-  {
-    name: 'Node.js',
-    percent: 75,
-    sort_order: 4,
-    icon: 'assets/img/logo/node.svg',
-    level: 'Strong'
-  },
-  {
-    name: 'Python',
-    percent: 75,
-    sort_order: 5,
+    id: 'python',
+    name: 'Python & Automation',
+    category: 'ai',
     icon: 'assets/img/logo/python.svg',
-    level: 'Strong'
+    badge: 'Scripting & AI',
+    badgeType: 'warning',
+    tagline: 'Automated data pipelines, document OCR extraction & backend automation.',
+    tags: ['Python Automation', 'OCR Pipeline', 'Data Parsing', 'Scraping', 'AI Workflows'],
+    level: 'Strong',
+    color: '#ca8a04',
+    iconBg: 'rgba(202, 138, 4, 0.12)'
   },
   {
-    name: 'PHP',
-    percent: 80,
-    sort_order: 6,
-    icon: 'assets/img/logo/php.svg',
-    level: 'Strong'
-  },
-  {
-    name: 'MySQL / PostgreSQL',
-    percent: 80,
-    sort_order: 7,
-    icon: 'assets/img/logo/mysql.svg',
-    level: 'Strong'
-  },
-  {
-    name: 'AI/ML (LangChain, Gemini AI, RAG)',
-    percent: 70,
-    sort_order: 8,
+    id: 'ai-ml',
+    name: 'AI, LangChain & Gemini',
+    category: 'ai',
     icon: 'assets/img/logo/aiml.svg',
-    level: 'Intermediate'
+    badge: 'Applied AI',
+    badgeType: 'purple',
+    tagline: 'LLM applications, RAG pipelines, semantic search & automated document parsing.',
+    tags: ['LangChain', 'Gemini AI API', 'RAG Pipelines', 'Vector Search (FAISS)', 'PDF OCR Automation'],
+    level: 'Intermediate',
+    color: '#9333ea',
+    iconBg: 'rgba(147, 51, 234, 0.12)'
+  },
+  {
+    id: 'flutter',
+    name: 'Flutter & Mobile APK',
+    category: 'frontend',
+    icon: 'assets/img/logo/flutter.svg',
+    badge: 'Mobile Apps',
+    badgeType: 'info',
+    tagline: 'Cross-platform mobile applications, custom APK builds & fluid responsive UI.',
+    tags: ['Flutter / Dart', 'Android APKs', 'State Management', 'REST API Integration', 'Material 3'],
+    level: 'Strong',
+    color: '#0284c7',
+    iconBg: 'rgba(2, 132, 199, 0.12)'
+  },
+  {
+    id: 'node-express',
+    name: 'Node.js & Express.js',
+    category: 'backend',
+    icon: 'assets/img/logo/node.svg',
+    badge: 'Core Backend',
+    badgeType: 'success',
+    tagline: 'High-performance microservices, custom auth middlewares & API endpoints.',
+    tags: ['Express.js', 'Async APIs', 'Middleware', 'JWT Security', 'REST Services'],
+    level: 'Strong',
+    color: '#16a34a',
+    iconBg: 'rgba(22, 163, 74, 0.12)'
+  },
+  {
+    id: 'js-ts',
+    name: 'JavaScript / TypeScript',
+    category: 'frontend',
+    icon: 'assets/img/logo/typescript.svg',
+    badge: 'Core Language',
+    badgeType: 'primary',
+    tagline: 'Modern ES6+, strictly typed architectures and reactive async coding.',
+    tags: ['TypeScript', 'ESNext / ES6+', 'Async / Await', 'DOM API', 'Type Safety'],
+    level: 'Advanced',
+    color: '#2563eb',
+    iconBg: 'rgba(37, 99, 235, 0.12)'
+  },
+  {
+    id: 'postgres-mysql',
+    name: 'PostgreSQL & MySQL',
+    category: 'database',
+    icon: 'assets/img/logo/postgres.svg',
+    badge: 'Relational DB',
+    badgeType: 'info',
+    tagline: 'Scalable schema design, optimized joins, indexing & cloud DB integrations.',
+    tags: ['Neon Cloud DB', 'Query Optimization', 'Schema Design', 'Indexing', 'Prisma / ORM'],
+    level: 'Strong',
+    color: '#0284c7',
+    iconBg: 'rgba(2, 132, 199, 0.12)'
+  },
+  {
+    id: 'tailwind-css',
+    name: 'Tailwind CSS & UI Systems',
+    category: 'frontend',
+    icon: 'assets/img/logo/tailwind.svg',
+    badge: 'Modern Styling',
+    badgeType: 'info',
+    tagline: 'Modern responsive designs, micro-animations & sleek clean UI aesthetics.',
+    tags: ['Tailwind CSS', 'Bootstrap 5', 'Responsive Design', 'Glassmorphism', 'CSS3 Animations'],
+    level: 'Advanced',
+    color: '#0891b2',
+    iconBg: 'rgba(8, 145, 178, 0.12)'
+  },
+  {
+    id: 'git-github',
+    name: 'Git & GitHub Workflows',
+    category: 'database',
+    icon: 'assets/img/logo/github.svg',
+    badge: 'Version Control',
+    badgeType: 'dark',
+    tagline: 'Version control, branch management, collaborative PRs and repository structuring.',
+    tags: ['Git CLI', 'GitHub Workflows', 'Branching', 'Code Management'],
+    level: 'Advanced',
+    color: '#334155',
+    iconBg: 'rgba(51, 65, 85, 0.12)'
   }
 ];
