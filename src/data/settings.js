@@ -16,7 +16,7 @@ export const settings = {
   hero_bg: 'assets/img/hero-bg.png',
   current_role: 'Full Stack Developer',
   working_status: 'Available for Full-time & Projects',
-  career_start_date: '2026-01-01T00:00:00',
+  career_start_date: '2025-09-01T00:00:00',
   stat_projects_shipped: '3+',
   stat_internship_months: '6',
   stat_certifications: '2+',

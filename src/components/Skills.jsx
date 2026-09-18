@@ -68,10 +68,10 @@ export default function Skills() {
           {/* Rich Skill Tiles Grid with Crisp Details */}
           <div className="row g-3">
             {filteredSkills.map((skill) => (
-              <div key={skill.id} className="col-lg-6 col-md-12">
+              <div key={skill.id} className="col-lg-4 col-md-6 col-12">
                 <div className="skill-detail-tile">
                   <div>
-                    <div className="d-flex align-items-center justify-content-between gap-2 mb-2">
+                    <div className="d-flex align-items-start justify-content-between gap-2 mb-2">
                       <div className="d-flex align-items-center gap-2">
                         <div
                           className="skill-tile-icon"

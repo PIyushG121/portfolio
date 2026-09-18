@@ -11,14 +11,26 @@ import { projects } from '../data/projects';
 
 export default function About() {
   const primaryEducation = educations[0];
-  const [liveExp, setLiveExp] = React.useState({ months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [liveExp, setLiveExp] = React.useState({ years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   React.useEffect(() => {
-    const startDate = new Date(settings.career_start_date || '2026-01-01T00:00:00');
+    const startDate = new Date(settings.career_start_date || '2025-09-01T00:00:00');
     const updateCounter = () => {
       const now = new Date();
       let tempDate = new Date(startDate.getTime());
-      
+
+      let years = 0;
+      while (true) {
+        let nextYear = new Date(tempDate);
+        nextYear.setFullYear(nextYear.getFullYear() + 1);
+        if (nextYear <= now) {
+          tempDate = nextYear;
+          years++;
+        } else {
+          break;
+        }
+      }
+
       let months = 0;
       while (true) {
         let nextMonth = new Date(tempDate);
@@ -40,7 +52,7 @@ export default function About() {
       diff -= minutes * (1000 * 60);
       const seconds = Math.floor(diff / 1000);
 
-      setLiveExp({ months, days, hours, minutes, seconds });
+      setLiveExp({ years, months, days, hours, minutes, seconds });
     };
     updateCounter();
     const timer = setInterval(updateCounter, 1000);
@@ -73,7 +85,7 @@ export default function About() {
             <div className="about-hero-card">
               <img src="assets/img/about.png" alt={`About ${settings.name}`} loading="lazy" />
               <div className="experience-badge">
-                <strong>6+ M</strong>
+                <strong>1+ Years</strong>
                 <span>Experience & Ticking</span>
               </div>
             </div>
@@ -119,10 +131,12 @@ export default function About() {
                   <div>
                     <h5>Experience</h5>
                     <p className="d-flex flex-column align-items-start">
-                      <span><strong>6+ Months</strong> (Internship & Projects)</span>
+                      <span><strong>1+ Years</strong> (Internship & Projects)</span>
                       <span className="exp-live-badge">
                         <i className="bi bi-play-circle-fill"></i>
-                        {liveExp.months > 0 && `${liveExp.months}mo `}{liveExp.days}d {String(liveExp.hours).padStart(2, '0')}h {String(liveExp.minutes).padStart(2, '0')}m {String(liveExp.seconds).padStart(2, '0')}s live
+                        {liveExp.years > 0 && `${liveExp.years}y `}
+                        {liveExp.months > 0 && `${liveExp.months}mo `}
+                        {liveExp.days}d {String(liveExp.hours).padStart(2, '0')}h {String(liveExp.minutes).padStart(2, '0')}m {String(liveExp.seconds).padStart(2, '0')}s live
                       </span>
                     </p>
                   </div>

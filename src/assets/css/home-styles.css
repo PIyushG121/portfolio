@@ -1441,6 +1441,7 @@ section,
     justify-content: space-between;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     height: 100%;
+    cursor: pointer;
 }
 
 .project-card:hover {
@@ -1560,6 +1561,9 @@ section,
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s ease;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
 .project-action-btn:hover {
@@ -1570,6 +1574,189 @@ section,
     width: 1px;
     height: 18px;
     background: #e2e8f0;
+}
+
+/* Modern Project Details Modal */
+.project-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: modal-fade-in 0.25s ease-out;
+}
+
+@keyframes modal-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.project-modal-dialog {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 760px;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
+    animation: modal-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+@keyframes modal-slide-up {
+    from {
+        transform: translateY(20px) scale(0.97);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.project-modal-header {
+    padding: 20px 26px;
+    border-bottom: 1px solid #eef2f6;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    z-index: 10;
+    border-radius: 20px 20px 0 0;
+}
+
+.project-modal-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    font-size: 15px;
+}
+
+.project-modal-close-btn:hover {
+    background: #fee2e2;
+    color: #dc2626;
+    border-color: #fca5a5;
+    transform: rotate(90deg);
+}
+
+.project-modal-banner {
+    width: 100%;
+    height: 220px;
+    background: #0f172a;
+    overflow: hidden;
+    position: relative;
+}
+
+.project-modal-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-modal-body-content {
+    padding: 24px 28px;
+}
+
+.project-modal-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eef2f6;
+}
+
+.project-modal-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: #475467;
+    font-weight: 500;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+.project-modal-meta-item i {
+    color: #2563eb;
+}
+
+.project-modal-content h4 {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 20px 0 10px 0;
+}
+
+.project-modal-content h4:first-child {
+    margin-top: 0;
+}
+
+.project-modal-content p {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #475467;
+    margin-bottom: 16px;
+}
+
+.project-feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-feature-list li {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #475467;
+    position: relative;
+    padding-left: 20px;
+}
+
+.project-feature-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #2563eb;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.project-modal-footer {
+    padding: 16px 28px;
+    border-top: 1px solid #eef2f6;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0 0 20px 20px;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 /* CTA Banner: "Have a project in mind?" */
@@ -1689,6 +1876,119 @@ section,
     font-weight: 500;
     padding: 3px 10px;
     border-radius: 6px;
+}
+
+/* Client Work & Production Project Card */
+.client-work-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.client-work-card:hover {
+    transform: translateY(-4px);
+    border-color: #93c5fd;
+    box-shadow: 0 16px 36px rgba(37, 99, 235, 0.12);
+}
+
+.client-work-img-wrap {
+    position: relative;
+    height: 190px;
+    background: #0f172a;
+    overflow: hidden;
+}
+
+.client-work-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.client-work-card:hover .client-work-img-wrap img {
+    transform: scale(1.04);
+}
+
+.client-work-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 4px 12px;
+    border-radius: 30px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #0f172a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+.client-work-body {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.client-work-category {
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.client-work-timeline {
+    font-size: 11.5px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.client-work-title {
+    font-size: 16.5px;
+    font-weight: 750;
+    color: #0f172a;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    line-height: 1.35;
+}
+
+.client-work-desc {
+    font-size: 13px;
+    color: #475467;
+    line-height: 1.55;
+    margin-bottom: 12px;
+}
+
+.client-work-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.client-work-highlights li {
+    font-size: 12px;
+    color: #334155;
+    line-height: 1.45;
+}
+
+.client-work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 /* Process Flow Banner */

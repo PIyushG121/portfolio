@@ -2,7 +2,7 @@ export const experiences = [
   {
     title: 'Full Stack Developer Intern',
     company: 'Webly Technolab',
-    years: 'Jan 2026 - June 2026',
+    years: 'Jan 2026 - Present',
     bullets: [
       'Built enterprise web apps using Laravel, React.js, PostgreSQL, and MySQL for prop trading and financial management platforms.',
       'Developed admin dashboards, REST APIs, authentication systems, and QR-based attendance management features.',
