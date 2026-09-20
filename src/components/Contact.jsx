@@ -34,7 +34,7 @@ export default function Contact() {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Can be configured or defaults to direct mail response
+          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY',
           name: formData.name,
           email: formData.email,
           subject: formData.subject,
@@ -68,7 +68,6 @@ export default function Contact() {
         });
       }
     } catch (err) {
-      // Fallback to mailto client
       window.location.href = `mailto:${settings.email}?subject=${encodeURIComponent(
         formData.subject
       )}&body=${encodeURIComponent(
@@ -85,65 +84,72 @@ export default function Contact() {
 
   return (
     <section id="contact" className="contact section">
-      <div className="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>
-          Have a project in mind or want to work together? Send me a message — I'll get back to you as soon as possible.
-        </p>
-      </div>
-
-      <div className="container" data-aos="fade-up" data-aos-delay="100">
-        <div className="row g-4">
+      <div className="container" data-aos="fade-up">
+        <div className="row g-4 mb-4">
           {/* Left Column: Info Card & Embedded Google Map */}
           <div className="col-lg-5">
-            <div className="contact-info-card">
-              <div className="contact-info-item">
-                <div className="contact-info-icon">
+            <div className="section-card-box h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div className="about-card-title mb-4">
                   <i className="bi bi-geo-alt"></i>
+                  <span>Contact Details</span>
                 </div>
-                <div className="contact-info-content">
-                  <h4>Location</h4>
-                  <p>{settings.city}</p>
+
+                <div className="contact-info-card border-0 shadow-none p-0 mb-4">
+                  <div className="contact-info-item">
+                    <div className="contact-info-icon">
+                      <i className="bi bi-geo-alt"></i>
+                    </div>
+                    <div className="contact-info-content">
+                      <h4>Location</h4>
+                      <p>{settings.city}</p>
+                    </div>
+                  </div>
+
+                  <div className="contact-info-item">
+                    <div className="contact-info-icon">
+                      <i className="bi bi-envelope"></i>
+                    </div>
+                    <div className="contact-info-content">
+                      <h4>Email</h4>
+                      <p>{settings.email}</p>
+                    </div>
+                  </div>
+
+                  <div className="contact-info-item">
+                    <div className="contact-info-icon">
+                      <i className="bi bi-telephone"></i>
+                    </div>
+                    <div className="contact-info-content">
+                      <h4>Phone</h4>
+                      <p>{settings.phone}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="contact-info-item">
-                <div className="contact-info-icon">
-                  <i className="bi bi-envelope"></i>
-                </div>
-                <div className="contact-info-content">
-                  <h4>Email</h4>
-                  <p>{settings.email}</p>
-                </div>
+              <div className="contact-map-card m-0">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14240.23157147585!2d80.8758804!3d26.8378942!2m3!1f0!0f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfc138eb15967%3A0xbca89547d639b70b!2sRajajipuram%2C%20Lucknow%2C%20Uttar%20Pradesh%20226017!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Google Map Location"
+                ></iframe>
               </div>
-
-              <div className="contact-info-item">
-                <div className="contact-info-icon">
-                  <i className="bi bi-telephone"></i>
-                </div>
-                <div className="contact-info-content">
-                  <h4>Phone</h4>
-                  <p>{settings.phone}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="contact-map-card">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14240.23157147585!2d80.8758804!3d26.8378942!2m3!1f0!0f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfc138eb15967%3A0xbca89547d639b70b!2sRajajipuram%2C%20Lucknow%2C%20Uttar%20Pradesh%20226017!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Google Map Location"
-              ></iframe>
             </div>
           </div>
 
           {/* Right Column: Contact Form */}
           <div className="col-lg-7">
-            <div className="contact-form-card">
+            <div className="section-card-box h-100">
+              <div className="about-card-title mb-4">
+                <i className="bi bi-chat-dots"></i>
+                <span>Send Me a Message</span>
+              </div>
+
               {status.submitted && (
                 <div
                   className={`alert ${
@@ -237,8 +243,8 @@ export default function Contact() {
                   </div>
                 </div>
               </form>
-              <div className="contact-security-text">
-                <i className="bi bi-lock-fill text-success"></i> Your information is safe with me. I'll never share your details.
+              <div className="contact-security-text mt-3">
+                <i className="bi bi-lock-fill text-success"></i> Your information is safe with me. I&apos;ll never share your details.
               </div>
             </div>
           </div>
@@ -251,9 +257,9 @@ export default function Contact() {
               <i className="bi bi-send-fill"></i>
             </div>
             <div>
-              <h4>Let's build something amazing together!</h4>
+              <h4>Let&apos;s build something amazing together!</h4>
               <p>
-                I'm available for freelance projects, internships, and full-time opportunities.
+                I&apos;m available for freelance projects, internships, and full-time opportunities.
               </p>
             </div>
           </div>

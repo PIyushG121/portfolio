@@ -1,0 +1,32 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#0C1524" rx="14"/>
+  <rect x="24" y="24" width="552" height="40" rx="8" fill="#172554"/>
+  <circle cx="48" cy="44" r="8" fill="#0284C7"/>
+  <text x="68" y="49" font-family="system-ui, sans-serif" font-weight="700" font-size="14" fill="#FFFFFF">Dr. Sunit Urocare</text>
+  <rect x="440" y="32" width="120" height="24" rx="4" fill="#0284C7"/>
+  <text x="452" y="48" font-family="system-ui, sans-serif" font-weight="600" font-size="11" fill="#FFFFFF">Book Consult</text>
+
+  <rect x="34" y="86" width="320" height="280" rx="10" fill="#1E293B" stroke="#334155"/>
+  <text x="54" y="120" font-family="system-ui, sans-serif" font-weight="800" font-size="15" fill="#38BDF8">Specialized Urology &amp; Care Portal</text>
+  <text x="54" y="145" font-family="system-ui, sans-serif" font-size="11.5" fill="#94A3B8">Advanced kidney stone treatments, prostate care &amp; laparoscopic urology clinic.</text>
+  <rect x="54" y="175" width="280" height="40" rx="6" fill="#0F172A"/>
+  <text x="70" y="200" font-family="system-ui, sans-serif" font-size="11" fill="#E2E8F0">📅 Online Appointment Scheduling</text>
+  <rect x="54" y="225" width="280" height="40" rx="6" fill="#0F172A"/>
+  <text x="70" y="250" font-family="system-ui, sans-serif" font-size="11" fill="#E2E8F0">🩺 Treatment Information Guides</text>
+  <rect x="54" y="275" width="280" height="40" rx="6" fill="#0F172A"/>
+  <text x="70" y="300" font-family="system-ui, sans-serif" font-size="11" fill="#E2E8F0">📍 Clinic Location &amp; Direct WhatsApp</text>
+
+  <rect x="370" y="86" width="196" height="280" rx="10" fill="#1E293B" stroke="#334155"/>
+  <text x="390" y="120" font-family="system-ui, sans-serif" font-weight="700" font-size="13" fill="#FFFFFF">Clinic Features</text>
+  <rect x="390" y="140" width="156" height="48" rx="6" fill="#0F172A"/>
+  <text x="402" y="162" font-family="system-ui, sans-serif" font-size="11" fill="#38BDF8">Kidney Stones</text>
+  <text x="402" y="178" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748B">Laser Treatment</text>
+
+  <rect x="390" y="200" width="156" height="48" rx="6" fill="#0F172A"/>
+  <text x="402" y="222" font-family="system-ui, sans-serif" font-size="11" fill="#34D399">Prostate Care</text>
+  <text x="402" y="238" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748B">BPH &amp; Oncology</text>
+
+  <rect x="390" y="260" width="156" height="48" rx="6" fill="#0F172A"/>
+  <text x="402" y="282" font-family="system-ui, sans-serif" font-size="11" fill="#FBBF24">Laparoscopy</text>
+  <text x="402" y="298" font-family="system-ui, sans-serif" font-size="9.5" fill="#64748B">Minimally Invasive</text>
+</svg>

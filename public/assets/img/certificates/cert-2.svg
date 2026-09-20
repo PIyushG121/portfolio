@@ -1,15 +1,35 @@
 <svg width="600" height="420" viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="600" height="420" fill="#FFFFFF" rx="12"/>
-  <rect x="12" y="12" width="576" height="396" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2" rx="8"/>
-  <rect x="24" y="24" width="6" height="372" fill="#0D9488"/>
-  <text x="48" y="60" font-family="system-ui, sans-serif" font-weight="700" font-size="18" fill="#0D9488">LearnTrail</text>
-  <text x="48" y="110" font-family="serif" font-weight="700" font-size="28" fill="#0F172A">Certificate of Completion</text>
-  <text x="48" y="145" font-family="system-ui, sans-serif" font-size="14" fill="#64748B">PROUDLY PRESENTED TO</text>
-  <text x="48" y="190" font-family="system-ui, sans-serif" font-weight="700" font-size="26" fill="#0D9488">Piyush Gupta</text>
-  <text x="48" y="230" font-family="system-ui, sans-serif" font-size="15" fill="#334155">for completing intensive training in</text>
-  <text x="48" y="260" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#0F172A">AI &amp; Machine Learning Bootcamp</text>
-  <line x1="48" y1="340" x2="200" y2="340" stroke="#CBD5E1" stroke-width="1.5"/>
-  <text x="48" y="360" font-family="system-ui, sans-serif" font-size="12" fill="#64748B">Program Director</text>
-  <circle cx="500" cy="320" r="35" fill="#CCFBF1" stroke="#0D9488" stroke-width="2"/>
-  <path d="M490 320l6 6 12-12" stroke="#0D9488" stroke-width="3" stroke-linecap="round"/>
+  <rect width="600" height="420" fill="#FFFFFF" rx="16"/>
+  <rect x="12" y="12" width="576" height="396" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2" rx="12"/>
+  
+  <!-- Accent bar -->
+  <rect x="24" y="24" width="8" height="372" rx="4" fill="#0070BA"/>
+  
+  <!-- Header with Tata & Forage -->
+  <text x="48" y="58" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" fill="#0A3A60" letter-spacing="2">TATA</text>
+  <text x="548" y="58" text-anchor="end" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B82F6">Forage</text>
+  
+  <text x="48" y="105" font-family="Georgia, serif" font-weight="700" font-size="24" fill="#0F172A">Certificate of Completion</text>
+  <text x="48" y="132" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#64748B" letter-spacing="1.5">ISSUED TO</text>
+  
+  <!-- Earner Name -->
+  <text x="48" y="174" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="28" fill="#0A3A60">Piyush Gupta</text>
+  
+  <text x="48" y="208" font-family="system-ui, -apple-system, sans-serif" font-size="13.5" fill="#475569">has completed practical job simulation tasks in</text>
+  <text x="48" y="238" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="18" fill="#0F172A">Data Visualisation: Empowering Business with Insights</text>
+  
+  <!-- Tasks Pill -->
+  <rect x="48" y="260" width="460" height="42" rx="6" fill="#F0FDF4" stroke="#BBF7D0"/>
+  <text x="58" y="278" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#15803D">✓ Business Scenarios • Visual Design • Analytics &amp; Effective Insights</text>
+  <text x="58" y="294" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#166534">Issued: January 7th, 2024 | Verification Code: Ce4okwbRKKGKLL7eP</text>
+  
+  <!-- Signatory -->
+  <line x1="48" y1="355" x2="220" y2="355" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="48" y="375" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Tom Brunskill</text>
+  <text x="48" y="390" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748B">CEO &amp; Co-Founder, Forage</text>
+  
+  <!-- Verified Seal -->
+  <circle cx="500" cy="340" r="36" fill="#F0F9FF" stroke="#0070BA" stroke-width="2.5"/>
+  <path d="M490 340l7 7 14-14" stroke="#0070BA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="500" y="390" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#0070BA">TATA / FORAGE</text>
 </svg>

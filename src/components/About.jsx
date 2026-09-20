@@ -11,6 +11,53 @@ import { projects } from '../data/projects';
 
 export default function About() {
   const primaryEducation = educations[0];
+  const [liveExp, setLiveExp] = React.useState({ years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  React.useEffect(() => {
+    const startDate = new Date(settings.career_start_date || '2025-09-01T00:00:00');
+    const updateCounter = () => {
+      const now = new Date();
+      let tempDate = new Date(startDate.getTime());
+
+      let years = 0;
+      while (true) {
+        let nextYear = new Date(tempDate);
+        nextYear.setFullYear(nextYear.getFullYear() + 1);
+        if (nextYear <= now) {
+          tempDate = nextYear;
+          years++;
+        } else {
+          break;
+        }
+      }
+
+      let months = 0;
+      while (true) {
+        let nextMonth = new Date(tempDate);
+        nextMonth.setMonth(nextMonth.getMonth() + 1);
+        if (nextMonth <= now) {
+          tempDate = nextMonth;
+          months++;
+        } else {
+          break;
+        }
+      }
+
+      let diff = Math.max(0, now - tempDate);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= days * (1000 * 60 * 60 * 24);
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      diff -= hours * (1000 * 60 * 60);
+      const minutes = Math.floor(diff / (1000 * 60));
+      diff -= minutes * (1000 * 60);
+      const seconds = Math.floor(diff / 1000);
+
+      setLiveExp({ years, months, days, hours, minutes, seconds });
+    };
+    updateCounter();
+    const timer = setInterval(updateCounter, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section id="about" className="about about-modern section">
@@ -43,8 +90,8 @@ export default function About() {
                 decoding="async"
               />
               <div className="experience-badge">
-                <strong>2+</strong>
-                <span>Years of Experience</span>
+                <strong>1+ Years</strong>
+                <span>Experience & Ticking</span>
               </div>
             </div>
           </div>
@@ -61,6 +108,47 @@ export default function About() {
               <div className="about-detail-grid">
                 <div className="about-detail-item">
                   <div className="about-detail-icon">
+                    <i className="bi bi-person-badge"></i>
+                  </div>
+                  <div>
+                    <h5>Current Role</h5>
+                    <p><strong>{settings.current_role || 'Full Stack Developer'}</strong></p>
+                  </div>
+                </div>
+
+                <div className="about-detail-item">
+                  <div className="about-detail-icon">
+                    <i className="bi bi-activity"></i>
+                  </div>
+                  <div>
+                    <h5>Working Status</h5>
+                    <p className="d-flex align-items-center gap-2">
+                      <span className="status-dot-pulse"></span>
+                      <span>{settings.working_status || 'Open to Opportunities'}</span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="about-detail-item">
+                  <div className="about-detail-icon">
+                    <i className="bi bi-stopwatch"></i>
+                  </div>
+                  <div>
+                    <h5>Experience</h5>
+                    <p className="d-flex flex-column align-items-start">
+                      <span><strong>1+ Years</strong> (Internship & Projects)</span>
+                      <span className="exp-live-badge">
+                        <i className="bi bi-play-circle-fill"></i>
+                        {liveExp.years > 0 && `${liveExp.years}y `}
+                        {liveExp.months > 0 && `${liveExp.months}mo `}
+                        {liveExp.days}d {String(liveExp.hours).padStart(2, '0')}h {String(liveExp.minutes).padStart(2, '0')}m {String(liveExp.seconds).padStart(2, '0')}s live
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="about-detail-item">
+                  <div className="about-detail-icon">
                     <i className="bi bi-mortarboard"></i>
                   </div>
                   <div>
@@ -68,6 +156,20 @@ export default function About() {
                     <p>{settings.degree}</p>
                   </div>
                 </div>
+
+                <div className="about-detail-item">
+                  <div className="about-detail-icon">
+                    <i className="bi bi-building"></i>
+                  </div>
+                  <div>
+                    <h5>College / Institution</h5>
+                    <p>
+                      {primaryEducation?.institution ||
+                        'Shri Ramswaroop Memorial College of Engineering and Management'}
+                    </p>
+                  </div>
+                </div>
+
                 <div className="about-detail-item">
                   <div className="about-detail-icon">
                     <i className="bi bi-envelope"></i>
@@ -77,18 +179,7 @@ export default function About() {
                     <p>{settings.email}</p>
                   </div>
                 </div>
-                <div className="about-detail-item">
-                  <div className="about-detail-icon">
-                    <i className="bi bi-building"></i>
-                  </div>
-                  <div>
-                    <h5>University</h5>
-                    <p>
-                      {primaryEducation?.institution ||
-                        'Shri Ramswaroop Memorial College of Engineering and Management'}
-                    </p>
-                  </div>
-                </div>
+
                 <div className="about-detail-item">
                   <div className="about-detail-icon">
                     <i className="bi bi-telephone"></i>
@@ -98,6 +189,7 @@ export default function About() {
                     <p>{settings.phone}</p>
                   </div>
                 </div>
+
                 <div className="about-detail-item">
                   <div className="about-detail-icon">
                     <i className="bi bi-geo-alt"></i>
@@ -107,15 +199,7 @@ export default function About() {
                     <p>{settings.city}</p>
                   </div>
                 </div>
-                <div className="about-detail-item">
-                  <div className="about-detail-icon">
-                    <i className="bi bi-briefcase"></i>
-                  </div>
-                  <div>
-                    <h5>Freelance</h5>
-                    <p>{settings.freelance}</p>
-                  </div>
-                </div>
+
                 <div className="about-detail-item">
                   <div className="about-detail-icon">
                     <i className="bi bi-globe"></i>
@@ -125,6 +209,7 @@ export default function About() {
                     <p>{settings.languages}</p>
                   </div>
                 </div>
+
                 <div className="about-detail-item">
                   <div className="about-detail-icon">
                     <i className="bi bi-kanban"></i>
