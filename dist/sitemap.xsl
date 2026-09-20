@@ -496,7 +496,7 @@
           <!-- Footer -->
           <div class="footer">
             <p>
-              Generated for <a href="https://www.piyushguptaportfolio.online/" target="_blank">Piyush Gupta Portfolio</a> &bull; Full Stack Developer &amp; AI Engineer
+              Generated for <a href="https://www.piyushguptaportfolio.online/" target="_blank">Piyush Gupta Portfolio</a> &#8226; Full Stack Developer &amp; AI Engineer
             </p>
           </div>
         </div>
