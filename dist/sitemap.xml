@@ -2,10 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-
-  <!-- ================================================================= -->
-  <!-- PRIMARY PORTFOLIO CANONICAL URL & RICH MEDIA ASSETS               -->
-  <!-- ================================================================= -->
   <url>
     <loc>https://www.piyushguptaportfolio.online/</loc>
     <lastmod>2026-09-20</lastmod>
@@ -13,82 +9,65 @@
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piyushguptaportfolio.online/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.piyushguptaportfolio.online/"/>
-
-    <!-- Profile & Branding Images -->
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/my-profile-img.jpeg</image:loc>
       <image:title>Piyush Gupta - Full Stack Developer &amp; AI Engineer</image:title>
       <image:caption>Official portrait of Piyush Gupta, Full Stack Developer skilled in React, Next.js, Laravel, Node.js, and AI solutions.</image:caption>
-      <image:geo_location>Lucknow, Uttar Pradesh, India</image:geo_location>
     </image:image>
-
     <image:image>
-      <image:loc>https://www.piyushguptaportfolio.online/assets/img/og-image.png</image:loc>
+      <image:loc>https://www.piyushguptaportfolio.online/assets/img/og-image.jpg</image:loc>
       <image:title>Piyush Gupta Portfolio Social Preview Banner</image:title>
       <image:caption>Full Stack Developer &amp; AI Engineer Portfolio - React.js, Next.js, Laravel, Node.js</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/about.png</image:loc>
       <image:title>About Piyush Gupta - Experience &amp; Engineering Philosophy</image:title>
       <image:caption>Piyush Gupta building scalable digital systems, AI tools, and enterprise web solutions.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/hero-bg.png</image:loc>
       <image:title>Piyush Gupta Portfolio Hero Background</image:title>
       <image:caption>Modern dark developer workstation theme</image:caption>
     </image:image>
-
-    <!-- Featured Projects Assets -->
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/portfolio/walletry.svg</image:loc>
       <image:title>Walletry – AI Finance Management Platform</image:title>
       <image:caption>Smart expense tracker and budget manager with AI financial insights built with Next.js, TypeScript, Supabase, Gemini AI, and Tailwind CSS.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/portfolio/resume-analyzer.svg</image:loc>
       <image:title>AI Resume Analyzer &amp; Parser</image:title>
       <image:caption>AI-powered resume parser and analyzer using NLP, RAG, and FAISS vector embeddings to extract actionable candidate insights.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/portfolio/attendance.svg</image:loc>
       <image:title>Attendance Management System</image:title>
       <image:caption>QR-based attendance system with real-time tracking, administrative reports, and role-based access control built using Laravel, React.js, and MySQL.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/portfolio/weblytechnolab.svg</image:loc>
       <image:title>Webly Technolab - Enterprise Client Solutions</image:title>
       <image:caption>Production web platforms, API microservices, and enterprise dashboard development.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/portfolio/tradefluenza.svg</image:loc>
       <image:title>TradeFluenza - Prop Trading Platform</image:title>
       <image:caption>High-performance financial trading dashboard and risk management engine.</image:caption>
     </image:image>
-
-    <!-- Verified Certifications Assets -->
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/certificates/cert-1.svg</image:loc>
       <image:title>Cybersecurity Fundamentals Certification - IBM SkillsBuild</image:title>
       <image:caption>Verified certification in cybersecurity principles, network security, and threat mitigation.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/certificates/cert-2.svg</image:loc>
       <image:title>AI &amp; Machine Learning Bootcamp - LearnTrail</image:title>
       <image:caption>Comprehensive ML model engineering, vector search, and NLP bootcamp certificate.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://www.piyushguptaportfolio.online/assets/img/certificates/cert-3.svg</image:loc>
       <image:title>Best Project Award - Walletry</image:title>
       <image:caption>Awarded for excellence in AI application development and full stack product execution.</image:caption>
     </image:image>
   </url>
-
 </urlset>
