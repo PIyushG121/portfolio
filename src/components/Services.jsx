@@ -76,7 +76,14 @@ export default function Services() {
               <div className="tech-mini-grid">
                 {miniTechIcons.map((tech, index) => (
                   <div key={index} className="tech-mini-item" title={tech.title}>
-                    <img src={tech.icon} alt={tech.title} />
+                    <img
+                      src={tech.icon}
+                      alt={`${tech.title} technology icon`}
+                      width="24"
+                      height="24"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                 ))}
               </div>

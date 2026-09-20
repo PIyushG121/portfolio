@@ -1,6 +1,10 @@
+# Robots.txt for Piyush Gupta Portfolio
 User-agent: *
-Disallow: /admin
-Disallow: /login
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /login
 
+# Host and Sitemap
+Host: https://www.piyushguptaportfolio.online
 Sitemap: https://www.piyushguptaportfolio.online/sitemap.xml

@@ -25,7 +25,7 @@ export default function Portfolio() {
             <h2>Portfolio</h2>
             <p>Projects showcasing full-stack applications, AI tools, and system solutions.</p>
           </div>
-          <div className="portfolio-filters-wrap">
+          <div className="portfolio-filters-wrap" role="group" aria-label="Project category filters">
             {filterButtons.map((btn, index) => (
               <button
                 key={index}
@@ -33,6 +33,7 @@ export default function Portfolio() {
                   activeFilter === btn.filter ? 'active' : ''
                 }`}
                 onClick={() => setActiveFilter(btn.filter)}
+                aria-pressed={activeFilter === btn.filter}
               >
                 {btn.label}
               </button>
@@ -44,63 +45,88 @@ export default function Portfolio() {
       <div className="container" data-aos="fade-up" data-aos-delay="100">
         <div className="row g-4">
           {filteredProjects.length > 0 ? (
-            filteredProjects.map((project) => (
-              <div key={project.id} className="col-lg-4 col-md-6">
-                <div className="project-card">
-                  <div>
-                    <div className="project-img-wrap">
-                      <img src={project.image_path} alt={project.title} loading="lazy" />
-                      {project.external_link && (
-                        <a
-                          href={project.external_link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="project-external-btn"
-                          title="Live Preview"
-                        >
-                          <i className="bi bi-box-arrow-up-right"></i>
-                        </a>
-                      )}
-                    </div>
-                    <div className="project-body">
-                      <span className="project-category-badge">
-                        {project.category}
-                      </span>
-                      <h3 className="project-title">{project.title}</h3>
-                      <p className="project-short-desc">
-                        {project.short_description}
-                      </p>
-                      <div className="project-tech-list">
-                        {project.tech_stack.map((tech, tIndex) => (
-                          <span key={tIndex} className="project-tech-pill">
-                            {tech}
-                          </span>
-                        ))}
+            filteredProjects.map((project) => {
+              const hasExternalLink = Boolean(
+                project.external_link &&
+                project.external_link.trim() !== '' &&
+                project.external_link !== '#' &&
+                !project.external_link.includes('example.com')
+              );
+              const targetLink = hasExternalLink
+                ? project.external_link
+                : project.github_link || 'https://github.com/piyush-gupta2003';
+
+              return (
+                <div key={project.id} className="col-lg-4 col-md-6">
+                  <div className="project-card">
+                    <div>
+                      <div className="project-img-wrap">
+                        <img
+                          src={project.image_path}
+                          alt={`${project.title} - ${project.category}`}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        {hasExternalLink && (
+                          <a
+                            href={project.external_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-external-btn"
+                            title={`Live preview of ${project.title}`}
+                            aria-label={`Live preview of ${project.title}`}
+                          >
+                            <i className="bi bi-box-arrow-up-right"></i>
+                          </a>
+                        )}
+                      </div>
+                      <div className="project-body">
+                        <span className="project-category-badge">
+                          {project.category}
+                        </span>
+                        <h3 className="project-title">{project.title}</h3>
+                        <p className="project-short-desc">
+                          {project.short_description}
+                        </p>
+                        <div className="project-tech-list" aria-label="Technologies used">
+                          {project.tech_stack.map((tech, tIndex) => (
+                            <span key={tIndex} className="project-tech-pill">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="project-footer-actions">
-                    <a
-                      href={project.external_link || '#'}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="project-action-btn"
-                    >
-                      <span>View Details</span> <i className="bi bi-arrow-right"></i>
-                    </a>
-                    <div className="project-action-divider"></div>
-                    <a
-                      href={project.github_link || 'https://github.com/piyush-gupta2003'}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="project-action-btn text-dark"
-                    >
-                      <i className="bi bi-github"></i> <span>GitHub</span>
-                    </a>
+                    <div className="project-footer-actions">
+                      <a
+                        href={targetLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-action-btn"
+                        aria-label={hasExternalLink ? `View live demo of ${project.title}` : `View ${project.title} on GitHub`}
+                      >
+                        <span>{hasExternalLink ? 'Live Demo' : 'View Code'}</span>{' '}
+                        <i className={`bi ${hasExternalLink ? 'bi-box-arrow-up-right' : 'bi-arrow-right'}`}></i>
+                      </a>
+                      {project.github_link && (
+                        <>
+                          <div className="project-action-divider"></div>
+                          <a
+                            href={project.github_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-action-btn text-dark"
+                            aria-label={`View ${project.title} repository on GitHub`}
+                          >
+                            <i className="bi bi-github"></i> <span>GitHub</span>
+                          </a>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <div className="col-12">
               <p className="text-center text-muted">
@@ -124,6 +150,7 @@ export default function Portfolio() {
           <a
             href="#contact"
             className="btn btn-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2"
+            aria-label="Get in touch about a project"
           >
             <i className="bi bi-send-fill"></i> <span>Get In Touch</span>
           </a>

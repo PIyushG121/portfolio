@@ -15,7 +15,14 @@ export default function Skills() {
             <div key={index} className="skill-card">
               <div className="skill-header">
                 <div className="skill-title-wrap">
-                  <img src={skill.icon} alt={skill.name} />
+                  <img
+                    src={skill.icon}
+                    alt={`${skill.name} skill icon`}
+                    width="28"
+                    height="28"
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <span>{skill.name}</span>
                 </div>
                 <div className="skill-stats">

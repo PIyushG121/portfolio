@@ -27,7 +27,9 @@ export default function Hero() {
     <section id="hero" className="hero section dark-background">
       <img
         src={settings.hero_bg}
-        alt="Hero background"
+        alt={`${settings.name} - Full Stack Developer Background`}
+        loading="eager"
+        decoding="async"
         data-aos="fade-in"
       />
 

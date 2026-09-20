@@ -36,7 +36,12 @@ export default function About() {
           </div>
           <div className="col-lg-5">
             <div className="about-hero-card">
-              <img src="assets/img/about.png" alt={`About ${settings.name}`} loading="lazy" />
+              <img
+                src="assets/img/about.png"
+                alt={`About ${settings.name} - Full Stack Developer`}
+                loading="lazy"
+                decoding="async"
+              />
               <div className="experience-badge">
                 <strong>2+</strong>
                 <span>Years of Experience</span>
@@ -171,9 +176,11 @@ export default function About() {
                   <div key={index} className="tech-pill">
                     <img
                       src={tech.icon}
-                      alt={tech.label}
+                      alt={`${tech.label} logo`}
                       width="22"
                       height="22"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span>{tech.label}</span>
                   </div>
@@ -187,9 +194,11 @@ export default function About() {
                   <div key={index} className="tech-pill">
                     <img
                       src={tech.icon}
-                      alt={tech.label}
+                      alt={`${tech.label} logo`}
                       width="22"
                       height="22"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <span>{tech.label}</span>
                   </div>

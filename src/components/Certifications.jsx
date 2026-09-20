@@ -9,7 +9,7 @@ export default function Certifications() {
         <div className="d-flex justify-content-between align-items-center flex-wrap gap-2">
           <div>
             <h2>Certifications & Achievements</h2>
-            <p>Highlights that strengthen the portfolio beyond project screenshots.</p>
+            <p>Highlights that validate technical competence and commitment to continuous learning.</p>
           </div>
         </div>
       </div>
@@ -112,13 +112,6 @@ export default function Certifications() {
             >
               Featured Certificates
             </h3>
-            <a
-              href="#certifications"
-              className="btn btn-outline-primary rounded-pill px-3 py-1 fw-semibold"
-              style={{ fontSize: '14px' }}
-            >
-              View All Certificates
-            </a>
           </div>
           <div className="row g-4">
             {certifications.map((cert) => (
@@ -126,14 +119,16 @@ export default function Certifications() {
                 <a
                   href={cert.image}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="featured-cert-card d-block"
+                  aria-label={`View certificate for ${cert.title}`}
                 >
                   <img
                     src={cert.image}
-                    alt={cert.title}
+                    alt={`Certificate for ${cert.title} - ${cert.issuer}`}
                     className="img-fluid"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="featured-cert-overlay">
                     <i className="bi bi-zoom-in"></i>

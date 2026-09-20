@@ -9,6 +9,7 @@ import Certifications from './components/Certifications';
 import Portfolio from './components/Portfolio';
 import Services from './components/Services';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 import { AuthProvider, useAuth } from './context/AuthContext';
@@ -47,6 +48,7 @@ function MainPortfolio() {
         <Services />
         <Contact />
       </main>
+      <Footer />
       <FloatingWhatsApp />
     </>
   );

@@ -70,20 +70,29 @@ export default function Header() {
         role="button"
         aria-label="Toggle navigation menu"
         aria-expanded={mobileHeaderOpen}
+        tabIndex={0}
         onClick={() => setMobileHeaderOpen(!mobileHeaderOpen)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            setMobileHeaderOpen(!mobileHeaderOpen);
+          }
+        }}
       ></i>
 
       <div className="profile-img text-center">
         <img
           src={settings.profile_photo}
-          alt={`Profile photo of ${settings.name}`}
+          alt={`Profile portrait of ${settings.name}`}
           className="img-fluid"
-          width="120"
-          height="120"
+          width="140"
+          height="140"
+          loading="eager"
+          decoding="async"
         />
         <span
           className="online-status-dot"
           title="Available for opportunities"
+          aria-label="Status: Available for opportunities"
         ></span>
       </div>
 
@@ -94,6 +103,7 @@ export default function Header() {
           handleNavClick('hero');
         }}
         className="logo d-flex flex-column align-items-center justify-content-center"
+        aria-label={`${settings.name} - Home`}
       >
         <span className="sitename h5 text-white mb-0 fw-bold">{settings.name}</span>
         <span className="sidebar-role-tagline">{settings.tagline}</span>
@@ -103,8 +113,9 @@ export default function Header() {
         <a
           href={settings.github}
           target="_blank"
-          rel="noreferrer"
-          title="GitHub"
+          rel="noopener noreferrer"
+          title="GitHub Profile"
+          aria-label="GitHub Profile"
           className="sidebar-social-btn"
         >
           <i className="bi bi-github"></i>
@@ -112,8 +123,9 @@ export default function Header() {
         <a
           href={settings.linkedin}
           target="_blank"
-          rel="noreferrer"
-          title="LinkedIn"
+          rel="noopener noreferrer"
+          title="LinkedIn Profile"
+          aria-label="LinkedIn Profile"
           className="sidebar-social-btn sidebar-social-linkedin"
         >
           <i className="bi bi-linkedin"></i>
@@ -121,8 +133,9 @@ export default function Header() {
         <a
           href={`mailto:${settings.email}`}
           target="_blank"
-          rel="noreferrer"
-          title="Email"
+          rel="noopener noreferrer"
+          title="Send Email"
+          aria-label="Send Email"
           className="sidebar-social-btn sidebar-social-mail"
         >
           <i className="bi bi-envelope-fill"></i>
