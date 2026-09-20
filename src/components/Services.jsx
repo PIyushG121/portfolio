@@ -186,27 +186,54 @@ export default function Services() {
           </div>
         </div>
 
-        {/* 2. Process Flow Card */}
-        <div className="section-card-box mb-4">
-          <div className="about-card-title mb-4">
-            <i className="bi bi-diagram-3"></i>
-            <span>My Development Process</span>
+        {/* 2. Process Flow & Technologies Card Grid */}
+        <div className="row g-4 mb-4">
+          <div className="col-lg-7">
+            <div className="process-card-box h-100">
+              <div className="about-card-title mb-4">
+                <i className="bi bi-diagram-3"></i>
+                <span>My Development Process</span>
+              </div>
+              <div className="d-flex align-items-center justify-content-between flex-wrap gap-3 py-2">
+                {processSteps.map((step, index) => (
+                  <React.Fragment key={index}>
+                    <div className="process-step-item">
+                      <div className="process-step-icon">
+                        <i className={step.icon}></i>
+                      </div>
+                      <span className="process-step-title">{step.step}</span>
+                      <p className="process-step-desc">{step.desc}</p>
+                    </div>
+                    {index < processSteps.length - 1 && (
+                      <span className="process-connector d-none d-md-inline">⇢</span>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="d-flex align-items-center justify-content-between flex-wrap gap-3 py-2">
-            {processSteps.map((step, index) => (
-              <React.Fragment key={index}>
-                <div className="process-step-item">
-                  <div className="process-step-icon">
-                    <i className={step.icon}></i>
+
+          <div className="col-lg-5">
+            <div className="tech-grid-box h-100">
+              <div className="about-card-title mb-4">
+                <i className="bi bi-cpu"></i>
+                <span>Technologies I Work With</span>
+              </div>
+              <div className="tech-mini-grid">
+                {miniTechIcons.map((tech, index) => (
+                  <div key={index} className="tech-mini-item" title={tech.title}>
+                    <img
+                      src={tech.icon}
+                      alt={`${tech.title} technology icon`}
+                      width="24"
+                      height="24"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
-                  <span className="process-step-title">{step.step}</span>
-                  <p className="process-step-desc">{step.desc}</p>
-                </div>
-                {index < processSteps.length - 1 && (
-                  <span className="process-connector d-none d-md-inline">⇢</span>
-                )}
-              </React.Fragment>
-            ))}
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
